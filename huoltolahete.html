@@ -1,0 +1,93 @@
+﻿<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Huoltolähete | Pitek Oy</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Sama navigaatio kuin pääsivulla -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <span class="dropbtn">Palvelut ▼</span>
+                    <div class="dropdown-content">
+                        <a href="index.html#palvelut">Piirturiasennukset</a>
+                        <a href="index.html#palvelut">Piirturikorjaukset</a>
+                        <a href="index.html#palvelut">Lakisääteiset tarkastukset</a>
+                        <a href="index.html#palvelut">Raskaan kaluston sähkötyöt</a>
+                    </div>
+                </li>
+                <li><a href="index.html#korjausprosessi">Korjausprosessi</a></li>
+                <li><a href="index.html#yhteystiedot">Yhteystiedot</a></li>
+                <li><a href="huoltolahete.html">Huoltolähete</a></li>
+                <li><a href="postitusohje.html">Postitusohje</a></li>
+            </ul>
+        </div>
+    </nav>
+
+    <header class="header" style="padding: 20px 0;">
+        <div class="container">
+            <a href="index.html">
+                <img src="pitekoyLogo.png" alt="Pitek Oy Logo" class="logo">
+            </a>
+            <h1>Huoltolähete</h1>
+        </div>
+    </header>
+
+    <main class="container section">
+        <div class="form-container">
+            <p style="margin-bottom: 20px; text-align: center;">Täytä alle laitteen ja yhteyshenkilön tiedot huoltoa varten.</p>
+
+            <form action="#" method="POST">
+                <div class="form-group">
+                    <label for="yritys">Nimi / Yritys *</label>
+                    <input type="text" id="yritys" name="yritys" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="yhteyshenkilo">Yhteyshenkilö</label>
+                    <input type="text" id="yhteyshenkilo" name="yhteyshenkilo">
+                </div>
+
+                <div class="form-group">
+                    <label for="osoite">Katuosoite *</label>
+                    <input type="text" id="osoite" name="osoite" required>
+                </div>
+
+                <div style="display: flex; gap: 15px;">
+                    <div class="form-group" style="flex: 1;">
+                        <label for="postinro">Postinumero *</label>
+                        <input type="text" id="postinro" name="postinro" required>
+                    </div>
+                    <div class="form-group" style="flex: 2;">
+                        <label for="toimipaikka">Postitoimipaikka *</label>
+                        <input type="text" id="toimipaikka" name="toimipaikka" required>
+                    </div>
+                </div>
+
+                <div class="form-group">
+                    <label for="puhelin">Puhelinnumero *</label>
+                    <input type="tel" id="puhelin" name="puhelin" required>
+                </div>
+
+                <div class="form-group">
+                    <label for="email">Sähköposti</label>
+                    <input type="email" id="email" name="email">
+                </div>
+
+                <div class="form-group">
+                    <label for="vikakuvaus">Laitteen viankuvaus ja lisätiedot *</label>
+                    <textarea id="vikakuvaus" name="vikakuvaus" rows="5" required></textarea>
+                </div>
+
+                <button type="submit" class="submit-btn">Lähetä huoltolähete</button>
+            </form>
+        </div>
+    </main>
+
+</body>
+</html>

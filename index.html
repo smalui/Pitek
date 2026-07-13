@@ -1,0 +1,134 @@
+﻿<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Pitek Oy | Piirturiasennukset ja raskaankaluston sähkötyöt Jyväskylä</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+    <!-- Navigointipalkki -->
+    <nav class="navbar">
+        <div class="container">
+            <ul class="nav-links">
+                <li class="dropdown">
+                    <span class="dropbtn">Palvelut ▼</span>
+                    <div class="dropdown-content">
+                        <a href="index.html#palvelut">Piirturiasennukset</a>
+                        <a href="index.html#palvelut">Piirturikorjaukset</a>
+                        <a href="index.html#palvelut">Lakisääteiset tarkastukset</a>
+                        <a href="index.html#palvelut">Raskaan kaluston sähkötyöt</a>
+                    </div>
+                </li>
+                <li><a href="index.html#korjausprosessi">Korjausprosessi</a></li>
+                <li><a href="index.html#yhteystiedot">Yhteystiedot</a></li>
+                <li><a href="huoltolahete.html">Huoltolähete</a></li>
+                <li><a href="postitusohje.html">Postitusohje</a></li>
+            </ul>
+        </div>
+    </nav>
+    <!-- Logo ja otsikko -->
+    <!-- Logo ja otsikko taustakuvalla -->
+    <header class="header" style="background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('tausta1.png') no-repeat center center; background-size: cover;">
+        <div class="container">
+            <a href="index.html">
+                <img src="pitekoyLogo.png" alt="Pitek Oy Logo" class="logo">
+            </a>
+            <p style="position: relative; z-index: 1;">Raskaan kaluston sähkötyöt ja piirturit ammattitaidolla vuodesta 1981</p>
+        </div>
+    </header>
+
+    <main class="container">
+
+        <section class="section" id="palvelut">
+            <h2>Mitä me teemme</h2>
+            <div class="service-grid">
+                <div class="service-card">
+                    <h3>Piirturiasennukset</h3>
+                    <p>Digitaalisten ja analogisten ajopiirtureiden asennukset kaikkiin raskaan kaluston ajoneuvoihin.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Piirturikorjaukset</h3>
+                    <p>Vianetsintä ja nopeat korjaukset, jotta kalusto saadaan pian takaisin tien päälle.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Tarkastukset</h3>
+                    <p>Lakisääteiset ajopiirtureiden tarkastukset ja kalibroinnit vankalla rutiinilla.</p>
+                </div>
+                <div class="service-card">
+                    <h3>Sähköasennukset</h3>
+                    <p>Muut raskaan kaluston vaativat sähkötyöt ja varustelut tarpeidenne mukaan.</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- UUSI: Korjausprosessi jonne navigaatio rullaa -->
+        <section class="section" id="palvelut">
+            <h2 style="text-transform: uppercase;">Palvelumme</h2>
+
+            <!-- Tässä pakotetaan kuvat vierekkäin ja keskelle suoraan HTML:ssä -->
+            <div style="display: flex; flex-direction: row; flex-wrap: wrap; justify-content: center; gap: 30px; margin-top: 40px;">
+
+                <!-- Kuvanappi 1 -->
+                <a href="piirturit.html" style="display: block; width: 150px; transition: transform 0.2s;">
+                    <img src="piirturit.png" alt="Piirturit" style="width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </a>
+
+                <!-- Kuvanappi 2 -->
+                <a href="mittaristot.html" style="display: block; width: 150px; transition: transform 0.2s;">
+                    <img src="mittaristo.png" alt="Mittaristot" style="width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </a>
+
+                <!-- Kuvanappi 3 -->
+                <a href="alkolukot.html" style="display: block; width: 150px; transition: transform 0.2s;">
+                    <img src="alkolukot.png" alt="Alkolukot" style="width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </a>
+
+                <!-- Kuvanappi 4 -->
+                <a href="seurantalaitteet.html" style="display: block; width: 150px; transition: transform 0.2s;">
+                    <img src="seurantalaitteet.png" alt="Seurantalaitteet" style="width: 100%; height: auto; border-radius: 6px; display: block; box-shadow: 0 4px 8px rgba(0,0,0,0.2);">
+                </a>
+
+            </div>
+        </section>
+
+    </main>
+
+    <!-- UUSI: Päivitetty alapalkki jonne navigaatio rullaa -->
+    <!-- Alapalkki taustakuvalla -->
+    <footer class="footer" id="yhteystiedot" style="background: linear-gradient(rgba(32, 33, 36, 0.90), rgba(32, 33, 36, 0.90)), url('tausta2.png') no-repeat center center; background-size: cover;">
+        <div class="container">
+            <h2>Yhteystiedot</h2>
+
+            <div class="footer-info">
+                <div>
+                    <h3>Käyntiosoite</h3>
+                    <p><strong>Pitek Oy</strong></p>
+                    <p>Esimerkkikatu 123</p>
+                    <p>40100 Jyväskylä</p>
+                </div>
+                <div>
+                    <h3>Ota yhteyttä</h3>
+                    <p>Puhelin: <a href="tel:+358401234567">040 123 4567</a></p>
+                    <p>Sähköposti: <a href="mailto:info@pitek.fi">info@pitek.fi</a></p>
+                </div>
+                <div>
+                    <h3>Aukioloajat</h3>
+                    <p>Ma - Pe: 08:00 - 16:00</p>
+                    <p>La - Su: Suljettu</p>
+                </div>
+                <div>
+                    <h3>Laskutustiedot</h3>
+                    <p>Verkkolaskuosoite: 003712345678</p>
+                    <p>Operaattori: Esimerkki Oy</p>
+                    <p>Y-tunnus: 1234567-8</p>
+                </div>
+            </div>
+
+            <p class="copyright">&copy; 2026 Pitek Oy. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+</body>
+</html>
