@@ -12,7 +12,7 @@ html {
 body {
     font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
     line-height: 1.6;
-    color: #3c4043; /* Pehmeämpi leipätekstin harmaa */
+    color: #3c4043;
     background-color: #f8f9fa; /* Geminin vaalea taustaväri */
 }
 
@@ -24,7 +24,7 @@ body {
 
 /* Navigointipalkki */
 .navbar {
-    background-color: #202124; /* Tumma harmaa */
+    background-color: #202124; /* Tummanharmaa */
     position: sticky;
     top: 0;
     z-index: 1000;
@@ -40,25 +40,25 @@ body {
     gap: 20px;
 }
 
-    .nav-links li {
-        position: relative;
-    }
+.nav-links li {
+    position: relative;
+}
 
-    .nav-links a, .dropbtn {
-        color: #ffffff;
-        text-decoration: none;
-        font-weight: 600;
-        font-size: 0.95rem;
-        padding: 10px;
-        display: block;
-        cursor: pointer;
-        text-transform: uppercase;
-        transition: color 0.2s;
-    }
+.nav-links a, .dropbtn {
+    color: #ffffff;
+    text-decoration: none;
+    font-weight: 600;
+    font-size: 0.95rem;
+    padding: 10px;
+    display: block;
+    cursor: pointer;
+    text-transform: uppercase;
+    transition: color 0.2s;
+}
 
-        .nav-links a:hover, .dropdown:hover .dropbtn {
-            color: #1a73e8; /* Geminin sininen hover-efekti */
-        }
+.nav-links a:hover, .dropdown:hover .dropbtn {
+    color: #1a73e8; /* Geminin sininen */
+}
 
 /* Alasvetovalikko */
 .dropdown-content {
@@ -70,32 +70,33 @@ body {
     z-index: 1;
     top: 100%;
     left: 0;
-    border-top: 3px solid #1a73e8; /* Sininen yläreuna */
+    border-top: 3px solid #1a73e8;
 }
 
-    .dropdown-content a {
-        color: #ffffff;
-        padding: 12px 16px;
-        text-decoration: none;
-        display: block;
-        text-transform: none;
-        border-bottom: 1px solid #3c4043;
-    }
+.dropdown-content a {
+    color: #ffffff;
+    padding: 12px 16px;
+    text-decoration: none;
+    display: block;
+    text-transform: none;
+    border-bottom: 1px solid #3c4043;
+}
 
-        .dropdown-content a:hover {
-            background-color: #3c4043;
-            color: #ffffff;
-        }
+.dropdown-content a:hover {
+    background-color: #3c4043;
+    color: #ffffff;
+}
 
 .dropdown:hover .dropdown-content {
     display: block;
 }
 
-/* Yläpalkki (Logo-alue) */
+/* Yläpalkki (Logo-alue taustakuvalla) */
 .header {
-    background-color: #ffffff;
+    background: linear-gradient(rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.85)), url('tausta1.png?v=2') no-repeat center center;
+    background-size: cover;
     color: #202124;
-    padding: 40px 0;
+    padding: 45px 0;
     text-align: center;
     border-bottom: 1px solid #dadce0;
 }
@@ -107,9 +108,9 @@ body {
     transition: transform 0.2s ease;
 }
 
-    .logo:hover {
-        transform: scale(1.02);
-    }
+.logo:hover {
+    transform: scale(1.02);
+}
 
 .header p {
     margin-top: 10px;
@@ -117,44 +118,51 @@ body {
     color: #5f6368;
 }
 
-.header h1 {
-    font-size: 2rem;
-    margin-top: 15px;
-    color: #202124;
-}
-
 /* Esittely & Palvelut */
-.section {
-    padding: 60px 0;
+.section { 
+    padding: 60px 0; 
 }
 
-    .section h2 {
-        text-align: center;
-        font-size: 2rem;
-        margin-bottom: 40px;
-        color: #202124;
-    }
+.section h2 { 
+    text-align: center; 
+    font-size: 2rem; 
+    margin-bottom: 10px; 
+    color: #202124; 
+    text-transform: uppercase;
+}
 
-.service-grid {
+.section-subtitle {
+    text-align: center;
+    color: #5f6368;
+    margin-bottom: 40px;
+    font-size: 1.1rem;
+}
+
+/* Esittelyteksti ja Kaksipalstainen asettelu */
+.intro-container {
     display: flex;
-    flex-wrap: wrap;
-    gap: 20px;
-    justify-content: center;
+    gap: 40px;
+    align-items: flex-start; /* Estää oikean laatikon venymisen vasemman kokoiseksi */
 }
 
-.service-card {
-    background: #ffffff;
+.intro-text {
+    flex: 2; /* Vasen palsta ottaa n. 2/3 tilasta */
+    font-size: 1.1rem;
+    line-height: 1.8;
+}
+
+.intro-text p {
+    margin-bottom: 20px;
+}
+
+.intro-contact {
+    flex: 1; /* Oikea palsta ottaa n. 1/3 tilasta */
+    background-color: #ffffff;
     padding: 30px;
     border-radius: 8px;
-    width: calc(50% - 20px);
     box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    border-top: 4px solid #1a73e8; /* Sininen yläreuna korteille */
+    border-top: 4px solid #1a73e8; /* Geminin sininen yläreuna */
 }
-
-    .service-card h3 {
-        color: #202124;
-        margin-bottom: 15px;
-    }
 
 /* Kuvanapit - Palvelut */
 .services-image-grid {
@@ -163,7 +171,6 @@ body {
     flex-wrap: wrap;
     justify-content: center;
     gap: 30px;
-    margin-top: 40px;
 }
 
 .service-img-link {
@@ -173,159 +180,151 @@ body {
     cursor: pointer;
 }
 
-    .service-img-link img {
-        width: 100%;
-        height: auto;
-        display: block;
-        border-radius: 4px;
-    }
-
-    .service-img-link:hover {
-        transform: translateY(-5px);
-        box-shadow: 0 10px 20px rgba(0,0,0,0.15);
-    }
-
-/* Korjausprosessi (Vaikuttaa aiempiin koodipätkiin) */
-.process-steps {
-    display: flex;
-    justify-content: space-between;
-    gap: 15px;
-    text-align: center;
-    flex-wrap: wrap;
+.service-img-link img {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 4px;
+    box-shadow: 0 4px 8px rgba(0,0,0,0.2);
 }
 
-.step {
-    background: #ffffff;
-    padding: 20px;
-    border-radius: 8px;
-    flex: 1;
-    min-width: 200px;
-    box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-    position: relative;
-    border: 1px solid #dadce0;
-}
-
-.step-number {
-    background: #1a73e8;
-    color: white;
-    width: 40px;
-    height: 40px;
-    line-height: 40px;
-    border-radius: 50%;
-    margin: 0 auto 15px auto;
-    font-size: 1.2rem;
-    font-weight: bold;
-}
-
-.step h3 {
-    color: #202124;
+.service-img-link:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.15);
 }
 
 /* Lomakkeet (Huoltolähete) */
-.form-container {
-    background: #ffffff;
-    padding: 40px;
-    border-radius: 8px;
-    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
-    max-width: 600px;
-    margin: 0 auto;
-    border: 1px solid #dadce0;
+.form-container { 
+    background: #ffffff; 
+    padding: 40px; 
+    border-radius: 8px; 
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05); 
+    max-width: 600px; 
+    margin: 0 auto; 
+    border: 1px solid #dadce0; 
 }
 
-.form-group {
-    margin-bottom: 20px;
+.form-group { 
+    margin-bottom: 20px; 
 }
 
-    .form-group label {
-        display: block;
-        margin-bottom: 8px;
-        font-weight: bold;
-        color: #202124;
-    }
-
-    .form-group input, .form-group textarea {
-        width: 100%;
-        padding: 12px;
-        border: 1px solid #dadce0;
-        border-radius: 4px;
-        font-family: inherit;
-    }
-
-        .form-group input:focus, .form-group textarea:focus {
-            outline: none;
-            border-color: #1a73e8;
-            box-shadow: 0 0 0 2px rgba(26,115,232,0.2);
-        }
-
-.submit-btn {
-    background-color: #1a73e8;
-    color: white;
-    padding: 12px 24px;
-    border: none;
-    border-radius: 4px;
-    font-size: 1.1rem;
-    cursor: pointer;
-    font-weight: bold;
-    width: 100%;
-    transition: background-color 0.2s;
+.form-group label { 
+    display: block; 
+    margin-bottom: 8px; 
+    font-weight: bold; 
+    color: #202124; 
 }
 
-    .submit-btn:hover {
-        background-color: #1557b0;
-    }
-
-/* Yhteystiedot / Alapalkki */
-.footer {
-    background-color: #202124;
-    color: #ffffff;
-    padding: 50px 0 20px;
-    text-align: center;
+.form-group input, .form-group textarea { 
+    width: 100%; 
+    padding: 12px; 
+    border: 1px solid #dadce0; 
+    border-radius: 4px; 
+    font-family: inherit; 
 }
 
-.footer-info {
-    display: flex;
-    justify-content: space-around;
-    flex-wrap: wrap;
-    gap: 20px;
+.form-group input:focus, .form-group textarea:focus { 
+    outline: none; 
+    border-color: #1a73e8; 
+    box-shadow: 0 0 0 2px rgba(26,115,232,0.2); 
+}
+
+.submit-btn { 
+    background-color: #1a73e8; 
+    color: white; 
+    padding: 12px 24px; 
+    border: none; 
+    border-radius: 4px; 
+    font-size: 1.1rem; 
+    cursor: pointer; 
+    font-weight: bold; 
+    width: 100%; 
+    transition: background-color 0.2s; 
+}
+
+.submit-btn:hover { 
+    background-color: #1557b0; 
+}
+
+/* Yhteystiedot / Alapalkki taustakuvalla */
+.footer { 
+    background: linear-gradient(rgba(32, 33, 36, 0.90), rgba(32, 33, 36, 0.90)), url('tausta2.png?v=2') no-repeat center center;
+    background-size: cover;
+    color: #ffffff; 
+    padding: 50px 0 20px; 
+    text-align: center; 
+}
+
+.footer-info { 
+    display: flex; 
+    justify-content: space-around; 
+    flex-wrap: wrap; 
+    gap: 20px; 
+    margin-bottom: 30px; 
+}
+
+.footer h2 {
     margin-bottom: 30px;
 }
 
-.footer a {
-    color: #8ab4f8;
-    text-decoration: none;
-    font-weight: bold;
-    transition: color 0.2s;
+.footer h3 {
+    margin-bottom: 10px;
+    color: #ffffff;
 }
-    /* Vaaleansininen linkkiväri tummalla taustalla */
-    .footer a:hover {
-        color: #d2e3fc;
-    }
 
-.copyright {
-    margin-top: 40px;
-    font-size: 0.9rem;
-    color: #9aa0a6;
-    border-top: 1px solid #3c4043;
-    padding-top: 20px;
+.footer a { 
+    color: #8ab4f8; 
+    text-decoration: none; 
+    font-weight: bold; 
+    transition: color 0.2s; 
+}
+
+.footer a:hover { 
+    color: #d2e3fc; 
+}
+
+.copyright { 
+    margin-top: 40px; 
+    font-size: 0.9rem; 
+    color: #9aa0a6; 
+    border-top: 1px solid #3c4043; 
+    padding-top: 20px; 
 }
 
 /* Mobiili */
 @media (max-width: 768px) {
-    .service-card {
+    /* Pienennetään yläpalkkia ja logoa */
+    .header {
+        padding: 20px 0; /* Pienempi tyhjä tila */
+    }
+    .logo {
+        max-width: 220px; /* Pienempi logo */
+    }
+    .header p {
+        font-size: 0.95rem; /* Hieman pienempi teksti */
+        margin-top: 5px;
+    }
+    
+    /* Pakotetaan palstat allekkain mobiilissa */
+    .intro-container {
+        flex-direction: column;
+        gap: 30px;
+    }
+    .intro-contact {
         width: 100%;
     }
-
-    .footer-info {
-        flex-direction: column;
+    
+    /* Alapalkin ja valikon asettelut */
+    .footer-info { 
+        flex-direction: column; 
+        gap: 30px;
     }
-
-    .nav-links {
-        flex-direction: column;
-        text-align: center;
+    .nav-links { 
+        flex-direction: column; 
+        text-align: center; 
     }
-
-    .dropdown-content {
-        position: static;
-        width: 100%;
+    .dropdown-content { 
+        position: static; 
+        width: 100%; 
     }
 }
