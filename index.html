@@ -5,18 +5,17 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pitek Oy | Piirturiasennukset ja raskaankaluston sähkötyöt Jyväskylä</title>
     <link rel="stylesheet" href="style.css">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
 
-    <!-- Valkoinen Navigointipalkki (TAVO-tyyli) -->
     <header class="navbar-white">
         <div class="container nav-container">
-            <!-- Logo vasemmalla -->
             <a href="index.html" class="logo-link">
                 <img src="pitekoyLogo.png" alt="Pitek Oy Logo" class="nav-logo">
             </a>
             
-            <!-- Linkit oikealla -->
             <ul class="nav-links-right">
                 <li class="dropdown">
                     <span class="dropbtn">Palvelut ▼</span>
@@ -34,43 +33,50 @@
         </div>
     </header>
 
-    <!-- UUSI: Vaihtuva kuvakaruselli (Hero Slider) -->
-    <section class="hero-slider">
+    <section class="hero-slider" aria-label="Yrityksen esittelykaruselli">
         
-        <!-- Dia 1 (tausta1.png) -->
-        <div class="slide active" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta1.png');">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Pitek – ja kalusto kulkee</h1>
-                    <p>Olemme asiantunteva raskaan kaluston sähkö- ja piirturiosaaja. Laajalla osaamisella ja laadukkaalla palvelulla autamme asiakkaitamme pitämään pyörät pyörimässä jo vuodesta 1981.</p>
+        <div class="slider-track">
+            
+            <article class="slide active" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta1.png');">
+                <div class="container">
+                    <header class="hero-content">
+                        <h1>Pitek Oy</h1>
+                        <p>Olemme asiantunteva raskaan kaluston sähkö- ja piirturiosaaja. Laajalla osaamisella ja laadukkaalla palvelulla autamme asiakkaitamme pitämään pyörät pyörimässä jo vuodesta 1981.</p>
+                    </header>
                 </div>
-            </div>
+            </article>
+
+            <article class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta2.png');">
+                <div class="container">
+                    <header class="hero-content">
+                        <h1>Ammattitaitoa kerralla oikein</h1>
+                        <p>Vankka kokemuksemme takaa luotettavat piirturiasennukset, alkolukot ja vaativatkin ajoneuvoelektroniikan korjaukset koko kalustollesi.</p>
+                    </header>
+                </div>
+            </article>
+
+            <article class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta3.png');">
+                <div class="container">
+                    <header class="hero-content">
+                        <h1>Piirturihuollot</h1>
+                        <p>Korjaamme ja huollamme kaikki piirturimerkit ja mallit.</p>
+                    </header>
+                </div>
+            </article>
+
         </div>
 
-        <!-- Dia 2 (tausta2.png) -->
-        <div class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta2.png');">
-            <div class="container">
-                <div class="hero-content">
-                    <h1>Ammattitaitoa kerralla oikein</h1>
-                    <p>Vankka kokemuksemme takaa luotettavat piirturiasennukset, alkolukot ja vaativatkin ajoneuvoelektroniikan korjaukset koko kalustollesi.</p>
-                </div>
-            </div>
-        </div>
-
-        <!-- Karusellin ohjausnapit -->
-        <button class="slider-btn prev-btn">&#10094;</button>
-        <button class="slider-btn next-btn">&#10095;</button>
+        <button class="slider-btn prev-btn" aria-label="Edellinen kuva">&#10094;</button>
+        <button class="slider-btn next-btn" aria-label="Seuraava kuva">&#10095;</button>
         
     </section>
 
     <main class="container">
         
-        <!-- Esittelyosio (Kaksipalstainen) -->
         <section class="section" id="esittely">
             <h2 style="margin-bottom: 30px;">Suomen luotetuinta raskaankaluston sähkö- ja piirturiosaamista</h2>
             
             <div class="intro-container">
-                <!-- Vasen reuna: Esittelyteksti -->
                 <div class="intro-text">
                     <p><strong>Pitek Oy</strong> on Jyväskylässä jo vuodesta 1981 alkaen toiminut raskaankaluston sähköasennusten ja ajoneuvoelektroniikan ammattilainen. Pitkä historiamme ja vankka kokemuksemme takaavat, että työt tehdään aina kerralla oikein ja alan tiukimpia laatuvaatimuksia noudattaen. Olemme valtakunnallisesti tunnettu ja arvostettu asiantuntija.</p>
                     
@@ -85,19 +91,25 @@
                     </ul>
                 </div>
 
-                <!-- Oikea reuna: Yhteystietokortti -->
                 <div class="intro-contact">
                     <h3 style="margin-bottom: 15px; color: #202124;">Palvelemme</h3>
-                    <p><strong>Käyntiosoite:</strong><br>Esimerkkikatu 123<br>40100 Jyväskylä</p>
-                    <p style="margin-top: 10px;"><strong>Avoinna:</strong><br>Ma - Pe: 08:00 - 16:00</p>
+                    
+                    <p><strong>Avoinna:</strong><br>Ma - Pe: 08:00 - 16:00</p>
+                    
+                    <div style="margin: 15px 0; position: relative; z-index: 1;">
+                        <div id="map" style="height: 180px; width: 100%; border-radius: 4px; border: 1px solid #dadce0;"></div>
+                    </div>
+
+                    <p><strong>Käyntiosoite:</strong><br>Palokärjentie 6<br>40320 Jyväskylä</p>
+                    
                     <hr style="border: 0; border-top: 1px solid #dadce0; margin: 15px 0;">
+                    
                     <p><strong>Puhelin:</strong><br><a href="tel:+358401234567" style="color: #1a73e8; text-decoration: none; font-weight: bold; font-size: 1.1rem;">040 123 4567</a></p>
                     <p style="margin-top: 10px;"><strong>Sähköposti:</strong><br><a href="mailto:info@pitek.fi" style="color: #1a73e8; text-decoration: none; font-weight: bold;">info@pitek.fi</a></p>
                 </div>
             </div>
         </section>
 
-        <!-- Palvelut (Kuvanapit) -->
         <section class="section" id="palvelut">
             <h2>Palvelumme</h2>
             <p class="section-subtitle">Klikkaa alta palvelua siirtyäksesi kyseisen palvelun esittelysivulle.</p>
@@ -117,36 +129,8 @@
                 </a>
             </div>
         </section>
-
-        <section class="section" id="sijainti">
-            <h2 style="margin-bottom: 30px;">Löydä perille</h2>
-            
-            <div class="map-container">
-                <div class="map-info">
-                    <h3 style="margin-bottom: 15px; color: #202124;">Sijaintimme</h3>
-                    <p><strong>Pitek Oy</strong></p>
-                    <p>Palokärjentie 6</p>
-                    <p>40320 Jyväskylä</p>
-                    <br>
-                    <p>Toimipisteemme sijaitsee hyvien kulkuyhteyksien päässä Seppälänkankaan teollisuusalueella.</p>
-                </div>
-                
-                <div class="map-embed">
-                    <iframe 
-                        src="https://maps.google.com/maps?q=Palok%C3%A4rjentie%206,%2040320%20Jyv%C3%A4skyl%C3%A4&t=&z=14&ie=UTF8&iwloc=&output=embed" 
-                        width="100%" 
-                        height="350" 
-                        style="border:0; border-radius: 8px; box-shadow: 0 4px 6px rgba(0,0,0,0.1);" 
-                        allowfullscreen="" 
-                        loading="lazy">
-                    </iframe>
-                </div>
-            </div>
-        </section>
     </main>
     
-
-    <!-- Alapalkki -->
     <footer class="footer" id="yhteystiedot">
         <div class="container">
             <h2>Yhteystiedot</h2>
@@ -180,46 +164,184 @@
         </div>
     </footer>
 
-    <!-- Karusellin toimintalogiikka (JavaScript) -->
     <script>
-        const slides = document.querySelectorAll('.slide');
-        let currentSlide = 0;
-        let slideInterval;
+        document.addEventListener('DOMContentLoaded', function() {
+            const track = document.querySelector('.slider-track');
+            let originalSlides = document.querySelectorAll('.slide');
+            
+            if (!track || originalSlides.length === 0) return;
 
-        // Vaihtaa aktiivisen dian
-        function showSlide(index) {
-            slides[currentSlide].classList.remove('active');
-            currentSlide = (index + slides.length) % slides.length; // Pitää indeksin aina rajojen sisällä
-            slides[currentSlide].classList.add('active');
-        }
+            // --- LOPUTTOMAN KEHÄN SILMÄNKÄÄNTÖTEMPPU ---
+            // Kopioidaan ensimmäinen ja viimeinen dia
+            const firstClone = originalSlides[0].cloneNode(true);
+            const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
+            
+            // Lisätään kloonit nauhan päihin
+            track.appendChild(firstClone);
+            track.insertBefore(lastClone, originalSlides[0]);
+            
+            // Haetaan nyt KAIKKI diat (mukaan lukien juuri tehdyt kloonit)
+            const slides = document.querySelectorAll('.slide');
+            
+            let currentIndex = 1; // Aloitetaan indeksistä 1 (oikea ensimmäinen kuva, 0 on klooni)
+            let slideInterval;
+            let slideWidth = 0;
 
-        // Seuraava ja edellinen dia (nollaa ajastimen)
-        function nextSlide() {
-            showSlide(currentSlide + 1);
-            resetInterval();
-        }
+            let startX = 0;
+            let currentTranslate = 0;
+            let prevTranslate = 0;
+            let isDragging = false;
+            let isTransitioning = false; // Estää sekoilun jos nappeja rämpyttää liian nopeasti
 
-        function prevSlide() {
-            showSlide(currentSlide - 1);
-            resetInterval();
-        }
+            // Liikuttaa nauhaa (instant = tosi tarkoittaa teleportaatiota ilman animaatiota)
+            function updateSliderPosition(instant = false) {
+                if (instant) {
+                    track.classList.add('dragging');
+                } else {
+                    track.classList.remove('dragging');
+                }
+                track.style.transform = `translateX(${currentTranslate}px)`;
+            }
 
-        // Automaattinen rullaus (6 sekuntia)
-        function startInterval() {
-            slideInterval = setInterval(nextSlide, 6000);
-        }
+            function setPositionByIndex(instant = false) {
+                if (slides[0].clientWidth > 0) {
+                    slideWidth = slides[0].clientWidth;
+                    currentTranslate = currentIndex * -slideWidth;
+                    prevTranslate = currentTranslate;
+                    updateSliderPosition(instant);
+                } else {
+                    setTimeout(() => setPositionByIndex(instant), 100);
+                }
+            }
 
-        function resetInterval() {
-            clearInterval(slideInterval);
+            // --- TÄMÄ HOITAA SALAISEN HYPYN KLOONIEN VÄLILLÄ ---
+            track.addEventListener('transitionend', () => {
+                isTransitioning = false;
+                // Jos liu'uttiin lopun kloonikuvaan, teleportataan takaisin oikeaan alkuun
+                if (currentIndex === slides.length - 1) {
+                    currentIndex = 1;
+                    setPositionByIndex(true);
+                }
+                // Jos liu'uttiin alun kloonikuvaan, teleportataan oikeaan loppuun
+                if (currentIndex === 0) {
+                    currentIndex = slides.length - 2;
+                    setPositionByIndex(true);
+                }
+            });
+
+            function showSlide(index) {
+                if (isTransitioning) return; // Odotetaan että edellinen liike loppuu
+                isTransitioning = true;
+                currentIndex = index;
+                setPositionByIndex(false);
+            }
+
+            function nextSlide() { showSlide(currentIndex + 1); resetInterval(); }
+            function prevSlide() { showSlide(currentIndex - 1); resetInterval(); }
+
+            // --- 1:1 SORMEN SEURANTA (SWIPE) ---
+            track.addEventListener('touchstart', touchStart);
+            track.addEventListener('touchmove', touchMove);
+            track.addEventListener('touchend', touchEnd);
+            window.addEventListener('resize', () => setPositionByIndex(true)); 
+
+            function touchStart(event) {
+                if (isTransitioning) return; // Ei anneta vetää kesken animaation
+                startX = event.touches[0].clientX;
+                isDragging = true;
+                track.classList.add('dragging'); 
+                clearInterval(slideInterval); 
+            }
+
+            function touchMove(event) {
+                if (!isDragging) return;
+                const currentPosition = event.touches[0].clientX;
+                const deltaX = currentPosition - startX;
+                currentTranslate = prevTranslate + deltaX; 
+                updateSliderPosition(true);
+            }
+
+            function touchEnd(event) {
+                if (!isDragging) return;
+                isDragging = false;
+                
+                const endPosition = event.changedTouches[0].clientX;
+                const movedBy = endPosition - startX;
+
+                if (movedBy < -70) {
+                    currentIndex += 1;
+                    isTransitioning = true;
+                } else if (movedBy > 70) {
+                    currentIndex -= 1;
+                    isTransitioning = true;
+                }
+                
+                setPositionByIndex(false);
+                startInterval(); 
+            }
+
+            // Napit ja automaatio
+            const prevBtn = document.querySelector('.prev-btn');
+            const nextBtn = document.querySelector('.next-btn');
+            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
+            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
+
+            function startInterval() { 
+                clearInterval(slideInterval); 
+                slideInterval = setInterval(nextSlide, 7000); 
+            }
+            function resetInterval() { clearInterval(slideInterval); startInterval(); }
+
+            // Käynnistys asettamalla oikea sijainti suoraan (ilman animaatiota)
+            setPositionByIndex(true);
             startInterval();
-        }
+            window.addEventListener('load', () => setPositionByIndex(true));
+        });
+    </script>
 
-        // Yhdistetään toiminnot nappeihin
-        document.querySelector('.next-btn').addEventListener('click', nextSlide);
-        document.querySelector('.prev-btn').addEventListener('click', prevSlide);
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            var pitekLat = 62.295245;
+            var pitekLng = 25.8116;
 
-        // Käynnistetään
-        startInterval();
+            var map = L.map('map').setView([pitekLat, pitekLng], 14);
+
+            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
+                attribution: '&copy; OpenStreetMap',
+                maxZoom: 19
+            }).addTo(map);
+
+            var customIcon = L.icon({
+                iconUrl: 'meisseli.png',
+                iconSize: [50, 50],
+                iconAnchor: [25, 25]
+            });
+
+            L.marker([pitekLat, pitekLng], {icon: customIcon}).addTo(map);
+        });
+    </script>
+
+    <script>
+        const navbar = document.querySelector('.navbar-white');
+        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let currentTranslateY = 0; 
+
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            let navbarHeight = navbar.offsetHeight; 
+            
+            let scrollDelta = scrollTop - lastScrollTop;
+            currentTranslateY -= scrollDelta;
+            
+            if (currentTranslateY > 0) {
+                currentTranslateY = 0;
+            } else if (currentTranslateY < -navbarHeight) {
+                currentTranslateY = -navbarHeight;
+            }
+
+            navbar.style.transform = `translateY(${currentTranslateY}px)`;
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        });
     </script>
 
 </body>
