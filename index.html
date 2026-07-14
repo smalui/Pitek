@@ -8,9 +8,16 @@
 </head>
 <body>
 
-    <nav class="navbar">
-        <div class="container">
-            <ul class="nav-links">
+    <!-- Valkoinen Navigointipalkki (TAVO-tyyli) -->
+    <header class="navbar-white">
+        <div class="container nav-container">
+            <!-- Logo vasemmalla -->
+            <a href="index.html" class="logo-link">
+                <img src="pitekoyLogo.png" alt="Pitek Oy Logo" class="nav-logo">
+            </a>
+            
+            <!-- Linkit oikealla -->
+            <ul class="nav-links-right">
                 <li class="dropdown">
                     <span class="dropbtn">Palvelut ▼</span>
                     <div class="dropdown-content">
@@ -20,44 +27,50 @@
                         <a href="index.html#palvelut">Seurantalaitteet</a>
                     </div>
                 </li>
+                <li><a href="index.html#esittely">Tietoa meistä</a></li>
                 <li><a href="index.html#yhteystiedot">Yhteystiedot</a></li>
                 <li><a href="huoltolahete.html">Huoltolähete</a></li>
             </ul>
         </div>
-    </nav>
-
-    <header class="header">
-        <div class="container">
-            <a href="index.html">
-                <img src="pitekoyLogo.png" alt="Pitek Oy Logo" class="logo">
-            </a>
-            <p>Raskaan kaluston sähkötyöt ja piirturit ammattitaidolla vuodesta 1981</p>
-        </div>
     </header>
+
+    <!-- UUSI: Vaihtuva kuvakaruselli (Hero Slider) -->
+    <section class="hero-slider">
+        
+        <!-- Dia 1 (tausta1.png) -->
+        <div class="slide active" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta1.png');">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Pitek – ja kalusto kulkee</h1>
+                    <p>Olemme asiantunteva raskaan kaluston sähkö- ja piirturiosaaja. Laajalla osaamisella ja laadukkaalla palvelulla autamme asiakkaitamme pitämään pyörät pyörimässä jo vuodesta 1981.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Dia 2 (tausta2.png) -->
+        <div class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta2.png');">
+            <div class="container">
+                <div class="hero-content">
+                    <h1>Ammattitaitoa kerralla oikein</h1>
+                    <p>Vankka kokemuksemme takaa luotettavat piirturiasennukset, alkolukot ja vaativatkin ajoneuvoelektroniikan korjaukset koko kalustollesi.</p>
+                </div>
+            </div>
+        </div>
+
+        <!-- Karusellin ohjausnapit -->
+        <button class="slider-btn prev-btn">&#10094;</button>
+        <button class="slider-btn next-btn">&#10095;</button>
+        
+    </section>
 
     <main class="container">
         
-        <section class="section" id="esittely">
-            <h2>Suomen luotetuinta raskaankaluston sähkö- ja piirturiosaamista</h2>
-            <div class="intro-text">
-                <p><strong>Pitek Oy</strong> on Jyväskylässä jo vuodesta 1981 alkaen toiminut raskaankaluston sähköasennusten ja ajoneuvoelektroniikan ammattilainen. Pitkä historiamme ja vankka kokemuksemme takaavat, että työt tehdään aina kerralla oikein ja alan tiukimpia laatuvaatimuksia noudattaen. Olemme valtakunnallisesti tunnettu ja arvostettu asiantuntija.</p>
-                
-                <p>Monipuoliseen palvelutarjontaamme kuuluvat keskeisesti:</p>
-                <ul class="intro-list">
-                    <li><strong>Piirturit & rajoittimet:</strong> Ajopiirturien ja nopeudenrajoittimien asennukset, kalibroinnit ja lakisääteiset tarkastukset.</li>
-                    <li><strong>Valtuutetut alkolukkopalvelut:</strong> Valtuutetut Dräger-alkolukkojen asennukset sekä alkometrien kalibroinnit ja myynti.</li>
-                    <li><strong>Ajoneuvoseuranta:</strong> Seurantalaitteiden ammattitaitoiset asennukset.</li>
-                    <li><strong>Tiedonluku:</strong> Piirturien ja kuljettajakorttien lakisääteisten tietojen luvut.</li>
-                    <li><strong>Elektroniikka & vianetsintä:</strong> Yleinen ajoneuvoelektroniikan vianetsintä ja korjauspalvelut.</li>
-                    <li><strong>Muut asennustyöt:</strong> Raskaankaluston sähkötyöt ja varustelut, kuten peruutuskamerat ja lisävalot.</li>
-                </ul>
-            </div>
-        </section>
-
+        <!-- Esittelyosio (Kaksipalstainen) -->
         <section class="section" id="esittely">
             <h2 style="margin-bottom: 30px;">Suomen luotetuinta raskaankaluston sähkö- ja piirturiosaamista</h2>
             
             <div class="intro-container">
+                <!-- Vasen reuna: Esittelyteksti -->
                 <div class="intro-text">
                     <p><strong>Pitek Oy</strong> on Jyväskylässä jo vuodesta 1981 alkaen toiminut raskaankaluston sähköasennusten ja ajoneuvoelektroniikan ammattilainen. Pitkä historiamme ja vankka kokemuksemme takaavat, että työt tehdään aina kerralla oikein ja alan tiukimpia laatuvaatimuksia noudattaen. Olemme valtakunnallisesti tunnettu ja arvostettu asiantuntija.</p>
                     
@@ -72,6 +85,7 @@
                     </ul>
                 </div>
 
+                <!-- Oikea reuna: Yhteystietokortti -->
                 <div class="intro-contact">
                     <h3 style="margin-bottom: 15px; color: #202124;">Palvelemme</h3>
                     <p><strong>Käyntiosoite:</strong><br>Esimerkkikatu 123<br>40100 Jyväskylä</p>
@@ -83,8 +97,30 @@
             </div>
         </section>
 
+        <!-- Palvelut (Kuvanapit) -->
+        <section class="section" id="palvelut">
+            <h2>Palvelumme</h2>
+            <p class="section-subtitle">Klikkaa alta palvelua siirtyäksesi kyseisen palvelun esittelysivulle.</p>
+            
+            <div class="services-image-grid">
+                <a href="piirturit.html" class="service-img-link">
+                    <img src="piirturit.png" alt="Piirturit">
+                </a>
+                <a href="mittaristot.html" class="service-img-link">
+                    <img src="mittaristo.png" alt="Mittaristot">
+                </a>
+                <a href="alkolukot.html" class="service-img-link">
+                    <img src="alkolukot.png" alt="Alkolukot">
+                </a>
+                <a href="seurantalaitteet.html" class="service-img-link">
+                    <img src="seurantalaitteet.png" alt="Seurantalaitteet">
+                </a>
+            </div>
+        </section>
+
     </main>
 
+    <!-- Alapalkki -->
     <footer class="footer" id="yhteystiedot">
         <div class="container">
             <h2>Yhteystiedot</h2>
@@ -117,6 +153,48 @@
             <p class="copyright">&copy; 2026 Pitek Oy. Kaikki oikeudet pidätetään.</p>
         </div>
     </footer>
+
+    <!-- Karusellin toimintalogiikka (JavaScript) -->
+    <script>
+        const slides = document.querySelectorAll('.slide');
+        let currentSlide = 0;
+        let slideInterval;
+
+        // Vaihtaa aktiivisen dian
+        function showSlide(index) {
+            slides[currentSlide].classList.remove('active');
+            currentSlide = (index + slides.length) % slides.length; // Pitää indeksin aina rajojen sisällä
+            slides[currentSlide].classList.add('active');
+        }
+
+        // Seuraava ja edellinen dia (nollaa ajastimen)
+        function nextSlide() {
+            showSlide(currentSlide + 1);
+            resetInterval();
+        }
+
+        function prevSlide() {
+            showSlide(currentSlide - 1);
+            resetInterval();
+        }
+
+        // Automaattinen rullaus (6 sekuntia)
+        function startInterval() {
+            slideInterval = setInterval(nextSlide, 6000);
+        }
+
+        function resetInterval() {
+            clearInterval(slideInterval);
+            startInterval();
+        }
+
+        // Yhdistetään toiminnot nappeihin
+        document.querySelector('.next-btn').addEventListener('click', nextSlide);
+        document.querySelector('.prev-btn').addEventListener('click', prevSlide);
+
+        // Käynnistetään
+        startInterval();
+    </script>
 
 </body>
 </html>
