@@ -307,6 +307,28 @@ body {
     border-top: 1px solid #3c4043; 
     padding-top: 20px; 
 }
+/* --- KARTTAOSIO --- */
+.map-container {
+    display: flex;
+    gap: 40px;
+    align-items: center;
+    background-color: #ffffff;
+    padding: 30px;
+    border-radius: 8px;
+    box-shadow: 0 4px 6px rgba(0,0,0,0.05);
+    border-top: 4px solid #1a73e8;
+}
+
+.map-info {
+    flex: 1; /* Tekstiosio ottaa 1/3 tilasta */
+    font-size: 1.1rem;
+    line-height: 1.6;
+}
+
+.map-embed {
+    flex: 2; /* Kartta ottaa 2/3 tilasta */
+    width: 100%;
+}
 
 /* MOBIILI KORJAUKSET */
 @media (max-width: 768px) {
@@ -360,5 +382,14 @@ body {
     .dropdown-content { 
         position: static; 
         width: 100%; 
+    }
+    /* Kartan mobiiliskaalaus */
+    .map-container {
+        flex-direction: column;
+        gap: 20px;
+        padding: 20px;
+    }
+    .map-embed iframe {
+        height: 250px; /* Pienempi kartta kännykällä */
     }
 }
