@@ -524,6 +524,150 @@ body {
 .subpage-content li {
     color: #000000 !important;
 }
+/* =========================================================
+   AJANKOHTAISTA / UUTISET -SIVU
+   ========================================================= */
+
+/* Uutislaatikon ulompi säiliö (pitää päivämäärän ja laatikon yhdessä) */
+.news-item-container {
+    margin-bottom: 40px;
+    max-width: 900px;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+/* Päivämäärä (Pieni, harmaa, vasemmalla ylhäällä) */
+.news-date {
+    font-size: 0.85rem;
+    color: #5f6368;
+    margin-bottom: 8px;
+    font-weight: 500;
+    text-transform: uppercase;
+    letter-spacing: 0.5px;
+}
+
+/* Itse pitkulainen laatikko */
+/* Itse uutislaatikko (Nyt pystysuuntainen ja tyhjää tilaa reunoilla) */
+/* Itse uutislaatikko (Vaakamuoto, tilaa reunoilla) */
+.news-card {
+    display: flex;
+    flex-direction: row; /* Asettaa kuvan vasemmalle ja tekstin oikealle */
+    background-color: #ffffff;
+    border: 1px solid #dadce0;
+    border-radius: 8px;
+    padding: 30px; /* Tyhjä tila laatikon sisäpuolella */
+    box-shadow: 0 4px 10px rgba(0,0,0,0.05);
+    transition: box-shadow 0.3s ease;
+    align-items: flex-start; /* Pitää kuvan ja napin nätisti yläreunassa */
+}
+
+.news-card:hover {
+    box-shadow: 0 8px 15px rgba(0,0,0,0.1);
+}
+
+/* Kuva vasemmalla pikkukuvana (Ei leikkaudu!) */
+/* Oletustila (Pieni kuva vasemmalla, ei leikkaudu) */
+.news-img {
+    flex: 0 0 160px;
+    width: 160px; /* TÄMÄ KORJAA MOBIILIN! Varmistaa leveyden. */
+    height: 160px;
+    background-size: contain;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: transparent;
+    margin-right: 30px;
+    margin-bottom: 0;
+    transition: all 0.3s ease; /* Tekee kuvan suurenemisesta pehmeän */
+}
+
+/* AVATTU TILA (Kun Javascript lisää ".open" -luokan laatikkoon) */
+.news-card.open {
+    flex-direction: column; /* Nostaa kuvan tekstin yläpuolelle */
+}
+
+.news-card.open .news-img {
+    flex: auto;
+    width: 100%; /* Laajentaa kuvan koko laatikon levyiseksi */
+    max-width: 100%;
+    height: auto;
+    aspect-ratio: 16 / 9; /* Pakottaa tyylikkään elokuvamaisen muodon */
+    background-size: cover; /* Täyttää uuden leveän muodon nätisti */
+    background-position: center;
+    margin-right: 0;
+    margin-bottom: 25px;
+    border-radius: 6px;
+}
+
+/* Tekstiosio */
+.news-text-content {
+    padding: 0; 
+    flex: 1;
+    display: flex;
+    flex-direction: column;
+}
+
+.news-text-content h2 {
+    font-size: 1.5rem;
+    color: #000000 !important;
+    margin-bottom: 15px;
+    line-height: 1.3;
+}
+
+.news-text-content p {
+    color: #000000 !important;
+    font-size: 1.05rem;
+    line-height: 1.6;
+    margin-bottom: 15px;
+}
+
+/* Piilotettu koko teksti (avautuu napista) */
+.news-full {
+    display: none;
+    margin-top: 10px;
+    padding-top: 15px;
+    border-top: 1px dashed #dadce0;
+}
+
+.news-full h3 {
+    font-size: 1.2rem;
+    color: #000000 !important;
+    margin-top: 20px;
+    margin-bottom: 10px;
+}
+
+/* Nappi laatikon sisällä */
+.news-toggle-btn {
+    align-self: flex-start; /* Pitää napin vasemmassa reunassa */
+    background-color: #1a73e8;
+    color: #ffffff;
+    border: none;
+    padding: 8px 20px;
+    font-weight: 600;
+    border-radius: 4px;
+    cursor: pointer;
+    margin-top: 10px;
+    transition: background-color 0.2s;
+    font-family: 'Roboto', sans-serif;
+}
+
+.news-toggle-btn:hover {
+    background-color: #1557b0;
+}
+
+/* Uutisen CTA-laatikko (Pitekin suosittelu) */
+.news-cta-box {
+    background-color: #f8f9fa;
+    padding: 20px;
+    border-radius: 6px;
+    border-left: 4px solid #1a73e8;
+    margin-top: 20px;
+    margin-bottom: 20px;
+}
+
+.news-cta-box p {
+    margin-bottom: 10px !important;
+    font-weight: 500;
+}
 
 /* Mobiilissa palstat asettuvat allekkain */
 @media (max-width: 768px) {
@@ -532,6 +676,7 @@ body {
         gap: 30px;
     }
 }
+
 
 
 /* =========================================================
@@ -614,5 +759,13 @@ body {
     .services-grid {
         grid-template-columns: 1fr; /* 1 laatikko per rivi puhelimella */
         gap: 20px;
+    }
+    .news-card {
+        flex-direction: column;
+        padding: 20px;
+    }
+    .news-img {
+        margin-right: 0;
+        margin-bottom: 20px;
     }
 }
