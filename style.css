@@ -676,6 +676,52 @@ body {
         gap: 30px;
     }
 }
+/* =========================================================
+   HINNASTO-SIVU (Taulukot)
+   ========================================================= */
+.pricing-table-container {
+    margin-bottom: 50px;
+}
+
+.pricing-table-container h2 {
+    color: #1a73e8 !important; /* Sininen otsikko erottaa ryhmät toisistaan */
+    font-size: 1.6rem;
+    margin-bottom: 15px;
+    border-bottom: 2px solid #dadce0;
+    padding-bottom: 10px;
+}
+
+.pricing-table {
+    width: 100%;
+    border-collapse: collapse;
+    margin-bottom: 10px;
+}
+
+.pricing-table th, .pricing-table td {
+    padding: 15px;
+    text-align: left;
+    border-bottom: 1px solid #dadce0;
+    color: #000000;
+    font-size: 1.05rem;
+}
+
+.pricing-table th {
+    background-color: #f8f9fa;
+    font-weight: 700;
+    text-transform: uppercase;
+    font-size: 0.9rem;
+    color: #5f6368;
+}
+
+.pricing-table tr:hover {
+    background-color: #f1f3f4; /* Korostaa rivin, kun hiiri viedään päälle */
+}
+
+.price-col {
+    text-align: right !important;
+    font-weight: 700;
+    white-space: nowrap; /* Estää hinnan menemisen kahdelle riville */
+}
 
 
 
