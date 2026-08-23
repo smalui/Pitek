@@ -446,7 +446,9 @@ body {
 /* =========================================================
    ALASIVUJEN TYYLIT (Palvelusivut)
    ========================================================= */
-
+main.container {
+    padding-bottom: 80px; /* Pakottaa aina 80px tyhjää tilaa laatikon ja footerin väliin */
+}
 
 /* Sisältöalue (kavennettu blogi-tyylisesti paremman luettavuuden vuoksi) */
 .subpage-content {
