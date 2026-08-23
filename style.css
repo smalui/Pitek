@@ -437,7 +437,7 @@ body {
 }
 /* Alapalkki taustakuvalla */
 .footer { 
-    background: linear-gradient(rgba(32, 33, 36, 0.90), rgba(32, 33, 36, 0.90)), url('tausta2.png') no-repeat center center;
+    background: linear-gradient(rgba(32, 33, 36, 0.90), rgba(32, 33, 36, 0.90)), url('tausta2.webp') no-repeat center center;
     background-size: cover;
     color: #ffffff; 
     padding: 50px 0 20px; 
