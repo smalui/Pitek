@@ -446,9 +446,7 @@ body {
 /* =========================================================
    ALASIVUJEN TYYLIT (Palvelusivut)
    ========================================================= */
-main.container {
-    padding-bottom: 80px; /* Pakottaa aina 80px tyhjää tilaa laatikon ja footerin väliin */
-}
+
 
 /* Sisältöalue (kavennettu blogi-tyylisesti paremman luettavuuden vuoksi) */
 .subpage-content {
@@ -683,6 +681,7 @@ main.container {
    ========================================================= */
 .pricing-table-container {
     margin-bottom: 50px;
+    overflow-x: auto;
 }
 
 .pricing-table-container h2 {
@@ -816,4 +815,32 @@ main.container {
         margin-right: 0;
         margin-bottom: 20px;
     }
+    .subpage-content {
+        padding: 20px; /* Puolittaa valkoisen laatikon sisäreunukset puhelimella */
+    }
+    
+    .pricing-table th, .pricing-table td {
+        padding: 10px 5px; /* Pienentää hieman taulukon tyhjää tilaa mobiilissa */
+    }
+}
+/* =========================================================
+   STICKY FOOTER (Pakottaa footerin sivun pohjaan)
+   ========================================================= */
+html, body {
+    overflow-x: hidden;
+}
+
+body {
+    min-height: 100vh; /* Vaihdetaan height -> min-height 100vh */
+    display: flex;
+    flex-direction: column;
+}
+
+main {
+    flex: 1 0 auto;
+    padding-bottom: 60px; /* Tämä takaa valkoisen laatikon ja footerin välin */
+}
+
+footer {
+    flex-shrink: 0;
 }
