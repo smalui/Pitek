@@ -1,0 +1,106 @@
+<!DOCTYPE html>
+<html lang="fi">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Nopeudenrajoittimen tarkastukset Jyväskylä | Pitek Oy</title>
+    <meta name="description" content="Valtuutetut nopeudenrajoittimien tarkastukset raskaalle kalustolle ja pakettiautoille Jyväskylässä. Saat meiltä todistuksen katsastukseen.">
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+
+    <header class="navbar-white">
+        <div class="container nav-container">
+            <a href="index.html" class="logo-link">
+                <!-- Varmista että logon päätteenä on se uusi webp -->
+                <img src="pitekoyLogo.webp" alt="Pitek Oy Logo" class="nav-logo">
+            </a>
+            
+            <ul class="nav-links-right">
+                <li class="dropdown">
+                    <span class="dropbtn">Palvelut <span class="arrow">▼</span></span>
+                    <div class="dropdown-content">
+                        <a href="nopeudenrajoittimen-tarkastus.html">Nopeudenrajoittimen tarkastukset</a>
+                        <a href="ajopiirturin-kalibrointi.html">Ajopiirturin kalibrointi</a>
+                        <a href="alkolukot.html">Alkolukot ja alkometrit</a>
+                        <a href="seurantalaitteet.html">Seurantalaiteasennukset</a>
+                        <a href="mittaristot.html">Piirturit & mittaristot</a>
+                        <a href="elektroniikka.html">Elektroniikan korjaustyöt</a>
+                        <a href="lisavarusteet.html">Peruutuskamerat ja lisävalot</a>
+                    </div>
+                </li>
+                <li><a href="ajankohtaista.html">Ajankohtaista</a></li>
+                <li><a href="hinnasto.html">Hinnasto</a></li>
+                <li><a href="index.html#esittely">Tietoa meistä</a></li>
+                <li><a href="index.html#yhteystiedot">Yhteystiedot</a></li>
+            </ul>
+        </div>
+    </header>
+
+    <main class="container" style="padding-top: 40px;">
+        <article class="subpage-content">
+            
+            <h1 style="font-size: 2.2rem; color: #000000; margin-bottom: 20px;">Nopeudenrajoittimen tarkastukset</h1>
+            <p><strong>Nopeudenrajoittimen oikea toiminta on paitsi turvallisuustekijä, myös lakisääteinen vaatimus raskaammassa liikenteessä. Valtuutettuna ammattilaisena hoidamme rajoittimien säädöt ja tarkastukset luotettavasti.</strong></p>
+            
+            <div class="subpage-grid">
+                
+                <!-- Vasen palsta -->
+                <div class="subpage-col">
+                    <h2>Katsastukseen vaadittava todistus</h2>
+                    <p>Nopeudenrajoittimen toiminta on osoitettava katsastuskonttorilla asianmukaisella todistuksella.</p>
+                    <ul>
+                        <li><strong>Painoraja:</strong> Tarkastustodistus tarvitaan määräaikaiskatsastukseen kaikissa yli 3500 kg painavissa autoissa.</li>
+                        <li><strong>Aikaraja:</strong> Tarkastus voidaan suorittaa aikaisintaan 3 kuukautta ennen varsinaista katsastuspäivää.</li>
+                        <li><strong>Saumaton palvelu:</strong> Annamme mukaasi virallisen todistuksen, jonka avulla katsastus sujuu ongelmitta.</li>
+                    </ul>
+                </div>
+                
+                <!-- Oikea palsta -->
+                <div class="subpage-col">
+                    <h2>Miten tarkastus suoritetaan?</h2>
+                    <p>Teemme tarkastukset ja säädöt ammattilaitteilla, jotta voimme taata laitteiden tarkan ja luotettavan toiminnan.</p>
+                    <ul>
+                        <li><strong>Täsmällisesti oikein:</strong> Huolehdimme, että auton nopeudenrajoitin on asetettu täsmällisesti oikein lainsäädännön sallimiin maksiminopeuksiin.</li>
+                        <li><strong>Kaikki merkit:</strong> Pystymme tarkastamaan ja säätämään nopeudenrajoittimet lähes kaikkiin kuorma-autoihin ja raskaisiin hyötyajoneuvoihin. Tarvittaessa voimme ajaa säädöt tiellä.</li>
+                    </ul>
+                </div>
+                
+            </div>
+
+            <div class="subpage-cta" style="border: 1px solid #202124;">
+                <h3 style="font-size: 1.5rem; margin-bottom: 15px; color: #000000 !important;">Katsastus lähestyy?</h3>
+                <p style="color: #000000 !important; margin-bottom: 0;">Hae virallinen tarkastustodistus meiltä ennen katsastuskonttorille menoa.</p>
+                <a href="tel:+358401234567" class="read-more-btn" style="position: relative; margin-top: 25px; left: 0; transform: none; display: inline-block;">Soita ja varaa aika</a>
+            </div>
+
+        </article>
+    </main>
+
+    <footer class="footer">
+        <!-- Tähän tulee sama alatunniste kuin muilla sivuilla -->
+        <div class="container">
+            <p class="copyright">&copy; 2026 Pitek Oy. Kaikki oikeudet pidätetään.</p>
+        </div>
+    </footer>
+
+    <script>
+        const navbar = document.querySelector('.navbar-white');
+        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
+        let currentTranslateY = 0; 
+        window.addEventListener('scroll', function() {
+            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            let navbarHeight = navbar.offsetHeight; 
+            let scrollDelta = scrollTop - lastScrollTop;
+            currentTranslateY -= scrollDelta;
+            if (currentTranslateY > 0) currentTranslateY = 0;
+            else if (currentTranslateY < -navbarHeight) currentTranslateY = -navbarHeight;
+            navbar.style.transform = `translateY(${currentTranslateY}px)`;
+            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
+        });
+    </script>
+</body>
+</html>
