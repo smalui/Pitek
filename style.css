@@ -20,6 +20,8 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
+    position: relative; /* Lisätty: Mahdollistaa z-indexin käytön */
+    z-index: 10; /* Lisätty: Nostaa kaikki kortit ja tekstit rekan yläpuolelle */
 }
 
 /* =========================================================
@@ -153,6 +155,7 @@ body {
     overflow: hidden;
     background-color: #202124;
     touch-action: pan-y; /* Sallii pystyrullauksen, kaappaa vaakavedot */
+    z-index: 10;
 }
 
 /* Nauha, joka pitää kuvat vierekkäin */
@@ -881,4 +884,32 @@ main {
 
 footer {
     flex-shrink: 0;
+}
+/* =========================================================
+   RULLAAVA KUORMA-AUTO TAUSTALLA
+   ========================================================= */
+.scrolling-truck-container {
+    position: fixed;
+    /* Nostetaan autoa reilusti ylemmäs. (Oli 50px) 
+       Voit käyttää pikseleitä (esim. 300px) tai prosentteja (esim. 40%) */
+    bottom: 10%; 
+    
+    /* Siirretään lähtöpistettä kauemmas vasemmalle, koska auto on nyt isompi, 
+       muuten sen keula kurkkaa ruudulle jo ennen rullausta. */
+    left: -1800px; 
+    
+    width: 100%;
+    z-index: 5;
+    pointer-events: none; 
+    /* Laitoin hieman haaleammaksi (0.10), kun kuva on nyt paljon isompi,
+       jottei se vie liikaa huomiota teksteiltä. */
+    opacity: 0.2; 
+}
+
+.scrolling-truck {
+    /* Suurennetaan auton kokoa (Oli 300px) */
+    width: 1600px; 
+    height: auto;
+    transform: translateX(0);
+    will-change: transform; 
 }

@@ -12,6 +12,10 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
+    <!-- Rullaava taustakuorma-auto -->
+<div class="scrolling-truck-container">
+    <img src="truck.webp" alt="" class="scrolling-truck" aria-hidden="true">
+</div>
 
     <header class="navbar-white">
         <div class="container nav-container">
@@ -437,6 +441,36 @@
             lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
         });
     </script>
+    <script>
+    document.addEventListener('DOMContentLoaded', function() {
+        const truck = document.querySelector('.scrolling-truck');
+        
+        // Varmistetaan, että koodi ajetaan vain jos auto on olemassa (etusivulla)
+        if (!truck) return;
+
+        window.addEventListener('scroll', function() {
+            // Lasketaan rullauksen määrä (0 = ylhäällä, 1 = aivan pohjalla)
+            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
+            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
+            
+            // Estetään jakolasku nollalla, jos sivu on liian lyhyt
+            if (scrollHeight <= 0) return;
+            
+            const scrollPercent = scrollTop / scrollHeight;
+            
+            // Lasketaan paljonko autoa siirretään:
+            // Ruudun leveys + auton leveys + vähän pelivaraa, jotta se menee kokonaan ulos oikealta
+            const windowWidth = window.innerWidth;
+            const truckWidth = truck.clientWidth || 300;
+            const maxMove = windowWidth + truckWidth + 100; 
+            
+            // Siirretään autoa prosentuaalisen rullauksen mukaan
+            const moveX = scrollPercent * maxMove;
+            
+            truck.style.transform = `translateX(${moveX}px)`;
+        });
+    });
+</script>
 
 </body>
 </html>
