@@ -478,6 +478,7 @@ body {
     color: #ffffff; 
     padding: 50px 0 20px; 
     text-align: center; 
+    z-index: 10;
 }
 /* =========================================================
    ALASIVUJEN TYYLIT (Palvelusivut)
