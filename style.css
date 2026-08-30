@@ -902,15 +902,68 @@ footer {
     width: 100%;
     z-index: 5;
     pointer-events: none; 
-    /* Laitoin hieman haaleammaksi (0.10), kun kuva on nyt paljon isompi,
-       jottei se vie liikaa huomiota teksteiltä. */
-    opacity: 0.2; 
+
+    opacity: 0.16; 
 }
 
 .scrolling-truck {
-    /* Suurennetaan auton kokoa (Oli 300px) */
     width: 1600px; 
     height: auto;
     transform: translateX(0);
     will-change: transform; 
+}
+/* =========================================================
+   RULLAAVAT PYLVÄÄT
+   ========================================================= */
+.scrolling-pylon {
+    position: fixed;
+    /* Sama pohjakorkeus ja haaleus kuin rekalla */
+    
+    height: 850px; /* Säädä pylvään kokoa tästä */
+    width: auto;
+    pointer-events: none;
+    will-change: transform;
+}
+
+/* Pylväs joka jää rekan taakse */
+.back-pylon {
+    z-index: 4; /* Pienempi kuin rekan (5) */
+    right: -50%; /* Lähtöpaikka oikealla */
+    height: 60%;
+    bottom: 20%;
+    opacity: 0.1;
+}
+
+/* Pylväs joka menee rekan päältä */
+.front-pylon {
+    z-index: 6; /* Suurempi kuin rekan (5) */
+    right: -100%; /* Lähtee vähän taaempaa oikealta, asettuu limittäin */
+    height: 80%;
+    bottom: 10%;
+    opacity: 0.35;
+}
+/* =========================================================
+   MOBIILIOPTIMOINTI (Puhelimet ja tabletit alle 768px)
+   ========================================================= */
+@media (max-width: 768px) {
+    .back-pylon {
+        /* Pienennä pylvästä puhelimella, jottei se ole jättimäinen */
+        height: 30%; 
+        /* Työnnä absoluuttisilla pikseleillä tarpeeksi kauas piiloon */
+        right: -200px; 
+    }
+    
+    .front-pylon {
+        height: 45%; 
+        right: -600px; /* Vielä kauemmas oikealle, jotta tulee myöhemmin ruudulle */
+    }
+
+    .scrolling-truck-container{
+        left: -600px;
+    }
+
+    .scrolling-truck {
+        width: 500px;
+        height: auto;
+    }
 }

@@ -12,40 +12,20 @@
     <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
 </head>
 <body>
-    <!-- Rullaava taustakuorma-auto -->
+
+<!-- Pylväs rekan takana -->
+<img src="pylvas.webp" alt="" class="scrolling-pylon back-pylon" aria-hidden="true">
+
+<!-- Rullaava taustakuorma-auto -->
 <div class="scrolling-truck-container">
     <img src="truck.webp" alt="" class="scrolling-truck" aria-hidden="true">
 </div>
 
-    <header class="navbar-white">
-        <div class="container nav-container">
-            <a href="index.html" class="logo-link">
-                <img src="Pitekoylogo2026.webp" alt="Pitek Oy Logo" class="nav-logo">
-            </a>
-            
-            <ul class="nav-links-right">
-                <li class="dropdown">
-                    <span class="dropbtn">Palvelut <span class="arrow">▼</span></span>
-                    <div class="dropdown-content">
-                        <a href="nopeudenrajoittimen-tarkastus.html">Nopeudenrajoittimen tarkastukset</a>
-                        <a href="ajopiirturin-kalibrointi.html">Ajopiirturin kalibrointi</a>
-                        <a href="alkolukot.html">Alkolukot ja alkometrit</a>
-                        <a href="seurantalaitteet.html">Seurantalaiteasennukset</a>
-                        <a href="mittaristot.html">Piirturit & mittaristot</a>
-                        <a href="elektroniikka.html">Elektroniikan korjaustyöt</a>
-                        <!-- Uudet ja päivitetyt palvelut -->
-                        <a href="obd-vikakoodit.html">OBD-vikakoodien luku</a>
-                        <a href="piirturidatan-tallennus.html">Piirturien ja korttien luku</a>
-                        <a href="lisavarusteet.html">Kamerat, lisävalot ja kaistavahdit</a>
-                    </div>
-                </li>
-                <li><a href="ajankohtaista.html">Ajankohtaista</a></li>
-                <li><a href="hinnasto.html">Hinnasto</a></li>
-                <li><a href="index.html#esittely">Tietoa meistä</a></li>
-                <li><a href="index.html#yhteystiedot">Yhteystiedot</a></li>
-            </ul>
-        </div>
-    </header>
+<!-- Pylväs rekan edessä -->
+<img src="pylvas.webp" alt="" class="scrolling-pylon front-pylon" aria-hidden="true">
+
+   <!-- hakee headerin -->
+<div id="header-placeholder"></div>
 
     <section class="hero-slider" aria-label="Yrityksen esittelykaruselli">
         
@@ -232,245 +212,10 @@
         </section>
     </main>
     
-    <footer class="footer" id="yhteystiedot">
-        <div class="container">
-            <h2>Yhteystiedot</h2>
-            
-            <div class="footer-info">
-                <div>
-                    <h3>Käyntiosoite</h3>
-                    <p><strong>Pitek Oy</strong></p>
-                    <p>Palokärjentie 6</p>
-                    <p>40320 Jyväskylä</p>
-                </div>
-                <div>
-                    <h3>Ota yhteyttä</h3>
-                    <p>Puhelin: <a href="tel:+358504535130">+358 504535130</a></p>
-                    <p>Sähköposti: <a href="mailto:jukka.penttinen@pitek.fi">jukka.penttinen@pitek.fi</a></p>
-                </div>
-                <div>
-                    <h3>Aukioloajat</h3>
-                    <p>Ma - Pe: 08:00 - 16:00</p>
-                    <p>La - Su: Suljettu</p>
-                </div>
-                <div>
-                    <h3>Laskutustiedot</h3>
-                    <p>Verkkolaskuosoite: 003704272265</p>
-                    <p>Operaattori: Maventa</p>
-                    <p>Y-tunnus: 0427226-5</p>
-                </div>
-            </div>
+    <!-- Tähän ladataan footer automaattisesti -->
+    <div id="footer-placeholder"></div>
 
-            <p class="copyright">&copy; 2026 Pitek Oy. Kaikki oikeudet pidätetään.</p>
-        </div>
-    </footer>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            const track = document.querySelector('.slider-track');
-            let originalSlides = document.querySelectorAll('.slide');
-            
-            if (!track || originalSlides.length === 0) return;
-
-            const firstClone = originalSlides[0].cloneNode(true);
-            const lastClone = originalSlides[originalSlides.length - 1].cloneNode(true);
-            
-            track.appendChild(firstClone);
-            track.insertBefore(lastClone, originalSlides[0]);
-            
-            const slides = document.querySelectorAll('.slide');
-            const dots = document.querySelectorAll('.dot'); 
-            
-            let currentIndex = 1;
-            let slideInterval;
-            let slideWidth = 0;
-
-            let startX = 0;
-            let currentTranslate = 0;
-            let prevTranslate = 0;
-            let isDragging = false;
-            let isTransitioning = false;
-
-            function updateDots() {
-                if (!dots.length) return;
-                dots.forEach(dot => dot.classList.remove('active'));
-                
-                let activeDotIndex = currentIndex;
-                if (currentIndex === 0) activeDotIndex = originalSlides.length;
-                if (currentIndex === originalSlides.length + 1) activeDotIndex = 1;
-                
-                dots[activeDotIndex - 1].classList.add('active');
-            }
-
-            function updateSliderPosition(instant = false) {
-                if (instant) track.classList.add('dragging');
-                else track.classList.remove('dragging');
-                track.style.transform = `translateX(${currentTranslate}px)`;
-            }
-
-            function setPositionByIndex(instant = false) {
-                if (slides[0].clientWidth > 0) {
-                    slideWidth = slides[0].clientWidth;
-                    currentTranslate = currentIndex * -slideWidth;
-                    prevTranslate = currentTranslate;
-                    updateSliderPosition(instant);
-                    updateDots(); 
-                } else {
-                    setTimeout(() => setPositionByIndex(instant), 100);
-                }
-            }
-
-            track.addEventListener('transitionend', () => {
-                isTransitioning = false;
-                if (currentIndex === slides.length - 1) {
-                    currentIndex = 1;
-                    setPositionByIndex(true);
-                }
-                if (currentIndex === 0) {
-                    currentIndex = slides.length - 2;
-                    setPositionByIndex(true);
-                }
-            });
-
-            function showSlide(index) {
-                if (isTransitioning) return;
-                isTransitioning = true;
-                currentIndex = index;
-                setPositionByIndex(false);
-            }
-
-            function nextSlide() { showSlide(currentIndex + 1); resetInterval(); }
-            function prevSlide() { showSlide(currentIndex - 1); resetInterval(); }
-
-            dots.forEach((dot, index) => {
-                dot.addEventListener('click', () => {
-                    showSlide(index + 1); 
-                    resetInterval();
-                });
-            });
-
-            track.addEventListener('touchstart', touchStart);
-            track.addEventListener('touchmove', touchMove);
-            track.addEventListener('touchend', touchEnd);
-            window.addEventListener('resize', () => setPositionByIndex(true)); 
-
-            function touchStart(event) {
-                if (isTransitioning) return;
-                startX = event.touches[0].clientX;
-                isDragging = true;
-                track.classList.add('dragging'); 
-                clearInterval(slideInterval); 
-            }
-
-            function touchMove(event) {
-                if (!isDragging) return;
-                const currentPosition = event.touches[0].clientX;
-                const deltaX = currentPosition - startX;
-                currentTranslate = prevTranslate + deltaX; 
-                updateSliderPosition(true);
-            }
-
-            function touchEnd(event) {
-                if (!isDragging) return;
-                isDragging = false;
-                const movedBy = event.changedTouches[0].clientX - startX;
-                if (movedBy < -70) { currentIndex += 1; isTransitioning = true; } 
-                else if (movedBy > 70) { currentIndex -= 1; isTransitioning = true; }
-                setPositionByIndex(false);
-                startInterval(); 
-            }
-
-            const prevBtn = document.querySelector('.prev-btn');
-            const nextBtn = document.querySelector('.next-btn');
-            if (prevBtn) prevBtn.addEventListener('click', prevSlide);
-            if (nextBtn) nextBtn.addEventListener('click', nextSlide);
-
-            function startInterval() { 
-                clearInterval(slideInterval); 
-                slideInterval = setInterval(nextSlide, 7000); 
-            }
-            function resetInterval() { clearInterval(slideInterval); startInterval(); }
-
-            setPositionByIndex(true);
-            startInterval();
-            window.addEventListener('load', () => setPositionByIndex(true));
-        });
-    </script>
-
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            var pitekLat = 62.295245;
-            var pitekLng = 25.8116;
-
-            var map = L.map('map').setView([pitekLat, pitekLng], 14);
-
-            L.tileLayer('https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png', {
-                attribution: '&copy; OpenStreetMap',
-                maxZoom: 19
-            }).addTo(map);
-
-            var customIcon = L.icon({
-                iconUrl: 'meisseli.webp',
-                iconSize: [50, 50],
-                iconAnchor: [25, 25]
-            });
-
-            L.marker([pitekLat, pitekLng], {icon: customIcon}).addTo(map);
-        });
-    </script>
-
-    <script>
-        const navbar = document.querySelector('.navbar-white');
-        let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-        let currentTranslateY = 0; 
-
-        window.addEventListener('scroll', function() {
-            let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            let navbarHeight = navbar.offsetHeight; 
-            
-            let scrollDelta = scrollTop - lastScrollTop;
-            currentTranslateY -= scrollDelta;
-            
-            if (currentTranslateY > 0) {
-                currentTranslateY = 0;
-            } else if (currentTranslateY < -navbarHeight) {
-                currentTranslateY = -navbarHeight;
-            }
-
-            navbar.style.transform = `translateY(${currentTranslateY}px)`;
-            lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
-        });
-    </script>
-    <script>
-    document.addEventListener('DOMContentLoaded', function() {
-        const truck = document.querySelector('.scrolling-truck');
-        
-        // Varmistetaan, että koodi ajetaan vain jos auto on olemassa (etusivulla)
-        if (!truck) return;
-
-        window.addEventListener('scroll', function() {
-            // Lasketaan rullauksen määrä (0 = ylhäällä, 1 = aivan pohjalla)
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            // Estetään jakolasku nollalla, jos sivu on liian lyhyt
-            if (scrollHeight <= 0) return;
-            
-            const scrollPercent = scrollTop / scrollHeight;
-            
-            // Lasketaan paljonko autoa siirretään:
-            // Ruudun leveys + auton leveys + vähän pelivaraa, jotta se menee kokonaan ulos oikealta
-            const windowWidth = window.innerWidth;
-            const truckWidth = truck.clientWidth || 300;
-            const maxMove = windowWidth + truckWidth + 100; 
-            
-            // Siirretään autoa prosentuaalisen rullauksen mukaan
-            const moveX = scrollPercent * maxMove;
-            
-            truck.style.transform = `translateX(${moveX}px)`;
-        });
-    });
-</script>
+    <script src="main.js"></script>
 
 </body>
 </html>
