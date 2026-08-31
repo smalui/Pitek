@@ -707,7 +707,7 @@ footer {
 .scrolling-truck-container {
     position: fixed;
     bottom: 10%; 
-    left: -1800px; 
+    left: -1200px; 
     width: 100%;
     z-index: 5;
     pointer-events: none; 
@@ -715,10 +715,11 @@ footer {
 }
 
 .scrolling-truck {
-    width: 1600px; 
+    width: 800px; 
     height: auto;
     transform: translateX(0);
     will-change: transform; 
+    z-index: 5;
 }
 
 .scrolling-pylon {
@@ -749,6 +750,7 @@ footer {
    FOOTER
    ========================================================= */
 .footer { 
+    position: relative;
     background: linear-gradient(rgba(32, 33, 36, 0.90), rgba(32, 33, 36, 0.90)), url('tausta2.webp') no-repeat center center;
     background-size: cover;
     color: var(--bg-white); 
