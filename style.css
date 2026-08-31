@@ -360,11 +360,11 @@ footer {
 
 .service-card {
     position: relative;
-    height: 350px;
+    height: 370px;
     border-radius: 8px;
     overflow: hidden;
-    background-size: 90px; 
-    background-position: center 50px; 
+    background-size: 100% auto;  
+    background-position:top center; 
     background-repeat: no-repeat; 
     background-color: var(--bg-hover); 
     border: 1px solid var(--text-darker); 
@@ -383,12 +383,24 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    background: transparent;
+    
+/* UUSI MASKI: Läpinäkyvä 170px asti -> Sininen viiva 170-174px -> Harmaa alaosa */
+    background: linear-gradient(
+        to bottom, 
+        transparent 0%, 
+        transparent 170px, 
+        var(--primary-blue) 170px, 
+        var(--primary-blue) 174px, 
+        var(--bg-hover) 174px, 
+        var(--bg-hover) 100%
+    );
+        
     padding: 20px;
+    padding-top: 185px;
     padding-bottom: 70px; 
     display: flex;
     flex-direction: column;
-    justify-content: flex-end; 
+    justify-content: flex-start; 
     align-items: center; 
     text-align: center; 
 }
