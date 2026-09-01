@@ -720,15 +720,16 @@ footer {
     position: fixed;
     bottom: 10%; 
     left: -1200px; 
+    height: -850px;
     width: 100%;
     z-index: 5;
     pointer-events: none; 
-    opacity: 0.16; 
+    opacity: 0.25; 
 }
 
 .scrolling-truck {
-    width: 800px; 
-    height: auto;
+    height: 600px;
+    width: auto; 
     transform: translateX(0);
     will-change: transform; 
     z-index: 5;
@@ -737,25 +738,31 @@ footer {
 .scrolling-pylon {
     position: fixed;
     height: 850px; 
-    width: auto;
+    width: 100%;
     pointer-events: none;
-    will-change: transform;
+    
 }
 
 .back-pylon {
     z-index: 4; 
     right: -50%; 
-    height: 60%;
+    height: 600px;
+    width: auto;
     bottom: 20%;
-    opacity: 0.1;
+    opacity: 0.18;
+    transform: translateX(0);
+    will-change: transform;
 }
 
 .front-pylon {
     z-index: 6; 
     right: -100%; 
-    height: 80%;
+    height: 800px;
+    width: auto;
     bottom: 10%;
     opacity: 0.35;
+    transform: translateX(0);
+    will-change: transform;
 }
 
 /* =========================================================
