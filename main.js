@@ -1,5 +1,12 @@
 document.addEventListener('DOMContentLoaded', function() {
 
+    //PUHELINNUMERON KOODI
+    const businessPhone = "+358504535130";
+
+    document.querySelectorAll("[data-phone-link").forEach(link =>{
+        link.href = `tel:${businessPhone}`;
+    });
+
     // 1. FOOTERIN LATAUS (Ajetaan kaikilla sivuilla, joissa on placeholder)
     const footerPlaceholder = document.getElementById('footer-placeholder');
     if (footerPlaceholder) {

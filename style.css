@@ -450,6 +450,22 @@ footer {
     background-color: var(--primary-blue-hover);
 }
 
+.phone-cta {
+    position: static;
+    left: auto;
+    bottom: auto;
+    display: inline-block;
+    transform: none;
+}
+
+.subpage-cta .phone-cta {
+    margin-top: 25px;
+}
+
+.news-cta-box .phone-cta {
+    margin-top: 10px;
+}
+
 .map-container {
     display: flex;
     gap: 40px;
@@ -1002,7 +1018,7 @@ footer {
         margin-right: 0;
         margin-bottom: 20px;
     }
-    
+
     .subpage-hero {
     min-height: 150px;
     padding: 25px 20px;
