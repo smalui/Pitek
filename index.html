@@ -4,12 +4,46 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Pitek Oy | Piirturiasennukset ja raskaankaluston sähkötyöt Jyväskylä</title>
+    <meta name="description" content="Pitek Oy palvelee Jyväskylässä raskaan kaluston sähkö-, ajopiirturi-, nopeudenrajoitin-, alkolukko- ja elektroniikkatöissä yli 40 vuoden kokemuksella.">
+    <link rel="canonical" href="https://www.pitek.fi/">
+    <link rel="icon" type="image/webp" href="Pitekoylogo2026.webp">
+    <meta property="og:type" content="website">
+    <meta property="og:locale" content="fi_FI">
+    <meta property="og:title" content="Pitek Oy | Raskaan kaluston sähkö- ja piirturiosaaja">
+    <meta property="og:description" content="Ajopiirturit, nopeudenrajoittimet, alkolukot ja ajoneuvoelektroniikka ammattitaidolla Jyväskylässä.">
+    <meta property="og:url" content="https://www.pitek.fi/">
+    <meta property="og:image" content="https://www.pitek.fi/tausta0.webp">
     <link rel="stylesheet" href="style.css">
-    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" />
+    <link rel="preload" as="image" href="tausta0.webp" type="image/webp">
+    <link rel="stylesheet" href="https://unpkg.com/leaflet@1.9.4/dist/leaflet.css" integrity="sha256-p4NxAoJBhIINfQ3ynhHDZGf1MQw3oY3Z3h0o8fY1c+Y=" crossorigin="anonymous">
     <link rel="preconnect" href="https://fonts.googleapis.com">
     <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
     <link href="https://fonts.googleapis.com/css2?family=Roboto:wght@400;500;700&display=swap" rel="stylesheet">
-    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>
+    <script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js" integrity="sha256-20nQCchB9co0qIjJZRGuk2/Z9VM+kNiyxNV1lvTlZBo=" crossorigin="anonymous" defer></script>
+    <script type="application/ld+json">
+    {
+        "@context": "https://schema.org",
+        "@type": "AutoRepair",
+        "name": "Pitek Oy",
+        "url": "https://www.pitek.fi/",
+        "image": "https://www.pitek.fi/tausta0.webp",
+        "telephone": "+358504535130",
+        "email": "jukka.penttinen@pitek.fi",
+        "address": {
+            "@type": "PostalAddress",
+            "streetAddress": "Palokärjentie 6",
+            "postalCode": "40320",
+            "addressLocality": "Jyväskylä",
+            "addressCountry": "FI"
+        },
+        "openingHoursSpecification": [{
+            "@type": "OpeningHoursSpecification",
+            "dayOfWeek": ["Monday", "Tuesday", "Wednesday", "Thursday", "Friday"],
+            "opens": "08:00",
+            "closes": "16:00"
+        }]
+    }
+    </script>
 </head>
 <body>
 
@@ -27,11 +61,11 @@
    <!-- hakee headerin -->
 <div id="header-placeholder"></div>
 
-    <section class="hero-slider" aria-label="Yrityksen esittelykaruselli">
+    <section class="hero-slider" aria-label="Yrityksen esittelykaruselli" aria-roledescription="karuselli">
         
         <div class="slider-track">
             
-            <article class="slide active" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta0.webp');">
+            <article class="slide active" role="group" aria-roledescription="dia" aria-label="1 / 4" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta0.webp');">
                 <div class="container">
                     <header class="hero-content">
                         <h1>Pitek Oy</h1>
@@ -40,28 +74,28 @@
                 </div>
             </article>
 
-            <article class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta5.webp');">
+            <article class="slide" role="group" aria-roledescription="dia" aria-label="2 / 4" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta5.webp');">
                 <div class="container">
                     <header class="hero-content">
-                        <h1>Määräaikaiskatsastukset kerralla kuntoon</h1>
+                        <h2>Määräaikais&shy;katsastukset kerralla kuntoon</h2>
                         <p>Suoritamme lakisääteiset ajopiirturien kalibroinnit ja nopeudenrajoittimien tarkastukset täsmällisesti. Meiltä saat tarvittavat viralliset todistukset suoraan katsastusta varten.</p>
                     </header>
                 </div>
             </article>
 
-            <article class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta6.webp');">
+            <article class="slide" role="group" aria-roledescription="dia" aria-label="3 / 4" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta6.webp');">
                 <div class="container">
                     <header class="hero-content">
-                        <h1>Alkolukot ja alkometrit</h1>
+                        <h2>Alkolukot ja alkometrit</h2>
                         <p>Valtuutettuna toimijana kalibroimme ja huollamme niin alkolukot kuin alkometritkin useammille merkeille.</p>
                     </header>
                 </div>
             </article>
 
-            <article class="slide" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta1.webp');">
+            <article class="slide" role="group" aria-roledescription="dia" aria-label="4 / 4" aria-hidden="true" style="background-image: linear-gradient(to right, rgba(32, 33, 36, 0.95) 0%, rgba(32, 33, 36, 0.4) 100%), url('tausta1.webp');">
                 <div class="container">
                     <header class="hero-content">
-                        <h1>Ajoneuvoelektroniikan korjaus</h1>
+                        <h2>Ajoneuvoelektroniikan korjaus</h2>
                         <p>Korjaamme ja huollamme kymmenien vuosien kokemuksella niin ajopiirturit, mittaristot kuin erikoisemmankin elektroniikan.</p>
                     </header>
                 </div>
@@ -72,12 +106,13 @@
         <button class="slider-btn prev-btn" aria-label="Edellinen kuva">&#10094;</button>
         <button class="slider-btn next-btn" aria-label="Seuraava kuva">&#10095;</button>
         
-        <!-- PALLOT LISÄTTYNÄ TÄHÄN (Nyt 4 kpl) -->
-        <div class="slider-dots">
-            <span class="dot active"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
-            <span class="dot"></span>
+        <div class="slider-controls">
+            <div class="slider-dots" aria-label="Valitse karusellin dia">
+                <button class="dot active" type="button" aria-label="Näytä dia 1" aria-current="true"></button>
+                <button class="dot" type="button" aria-label="Näytä dia 2"></button>
+                <button class="dot" type="button" aria-label="Näytä dia 3"></button>
+                <button class="dot" type="button" aria-label="Näytä dia 4"></button>
+            </div>
         </div>
         
     </section>
@@ -215,7 +250,7 @@
     <!-- Tähän ladataan footer automaattisesti -->
     <div id="footer-placeholder"></div>
 
-    <script src="main.js"></script>
+    <script src="main.js" defer></script>
 
 </body>
 </html>

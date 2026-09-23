@@ -22,6 +22,12 @@ html {
     overflow-x: hidden;
 }
 
+#esittely,
+#palvelut,
+#yhteystiedot {
+    scroll-margin-top: 90px;
+}
+
 * {
     box-sizing: border-box;
     margin: 0;
@@ -32,7 +38,7 @@ body {
     font-family: 'Roboto', sans-serif;
     line-height: 1.6;
     color: var(--text-dark);
-    background-color: var(--bg-main); 
+    background-color: var(--bg-main);
     min-height: 100vh;
     display: flex;
     flex-direction: column;
@@ -42,27 +48,49 @@ body {
     max-width: 1000px;
     margin: 0 auto;
     padding: 0 20px;
-    position: relative; 
-    z-index: 10; 
+    position: relative;
+    z-index: 10;
 }
 
 main {
     flex: 1 0 auto;
-    padding-bottom: 60px; 
+    padding-bottom: 60px;
 }
 
 footer {
     flex-shrink: 0;
 }
 
+.sr-only {
+    position: absolute;
+    width: 1px;
+    height: 1px;
+    padding: 0;
+    margin: -1px;
+    overflow: hidden;
+    clip: rect(0, 0, 0, 0);
+    white-space: nowrap;
+    border: 0;
+}
+
+a:focus-visible,
+button:focus-visible {
+    outline: 3px solid #0b57d0;
+    outline-offset: 3px;
+}
+
 /* =========================================================
    YLÄPALKKI JA VALIKOT
    ========================================================= */
-.navbar-white {
-    background-color: var(--bg-white);
+#header-placeholder {
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+.navbar-white {
+    background-color: var(--bg-white);
+    position: relative;
     padding: 10px 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-bottom: 3px solid var(--primary-blue);
@@ -80,6 +108,10 @@ footer {
     display: block;
 }
 
+.nav-toggle {
+    display: none;
+}
+
 .nav-links-right {
     list-style: none;
     display: flex;
@@ -91,7 +123,7 @@ footer {
     position: relative;
 }
 
-.nav-links-right > li > a, 
+.nav-links-right > li > a,
 .nav-links-right > li > .dropbtn {
     position: relative;
     color: var(--text-darker);
@@ -103,28 +135,35 @@ footer {
     cursor: pointer;
     text-transform: uppercase;
     transition: color 0.2s;
+    background: none;
+    border: 0;
+    font-family: inherit;
 }
 
-.nav-links-right > li > a:hover, 
-.dropdown:hover .dropbtn {
+.nav-links-right > li > a:hover,
+.dropdown:hover .dropbtn,
+.dropdown:focus-within .dropbtn,
+.dropdown.is-open .dropbtn {
     color: var(--primary-blue);
 }
 
-.nav-links-right > li > a::after, 
+.nav-links-right > li > a::after,
 .nav-links-right > li > .dropbtn::after {
     content: '';
     position: absolute;
     width: 0;
     height: 3px;
-    bottom: 0; 
+    bottom: 0;
     left: 50%;
     transform: translateX(-50%);
     background-color: var(--primary-blue);
     transition: width 0.3s ease;
 }
 
-.nav-links-right > li > a:hover::after, 
-.dropdown:hover .dropbtn::after {
+.nav-links-right > li > a:hover::after,
+.dropdown:hover .dropbtn::after,
+.dropdown:focus-within .dropbtn::after,
+.dropdown.is-open .dropbtn::after {
     width: 100%;
 }
 
@@ -135,7 +174,9 @@ footer {
     margin-left: 4px;
 }
 
-.dropdown:hover .arrow {
+.dropdown:hover .arrow,
+.dropdown:focus-within .arrow,
+.dropdown.is-open .arrow {
     transform: rotate(180deg);
 }
 
@@ -143,7 +184,7 @@ footer {
     display: none;
     position: absolute;
     background-color: var(--bg-white);
-    min-width: 270px; 
+    min-width: 270px;
     box-shadow: 0px 8px 16px 0px rgba(0,0,0,0.1);
     z-index: 1;
     top: 100%;
@@ -155,7 +196,7 @@ footer {
     color: var(--text-darker);
     padding: 12px 16px;
     border-bottom: 1px solid var(--bg-hover);
-    text-transform: none; 
+    text-transform: none;
     font-weight: 500;
     text-decoration: none;
     display: block;
@@ -167,19 +208,21 @@ footer {
     color: var(--primary-blue);
 }
 
-.dropdown:hover .dropdown-content {
+.dropdown:hover .dropdown-content,
+.dropdown:focus-within .dropdown-content,
+.dropdown.is-open .dropdown-content {
     display: block;
 }
 
 /* =========================================================
-   KONFLIKTIVAPAA HERO SLIDER 
+   KONFLIKTIVAPAA HERO SLIDER
    ========================================================= */
 .hero-slider {
     position: relative;
     height: 550px;
     overflow: hidden;
     background-color: var(--text-darker);
-    touch-action: pan-y; 
+    touch-action: pan-y;
     z-index: 10;
 }
 
@@ -188,7 +231,7 @@ footer {
     width: 100%;
     height: 100%;
     transition: transform 0.3s ease-in-out;
-    transform: translateX(0); 
+    transform: translateX(0);
 }
 
 .slider-track.dragging {
@@ -196,10 +239,10 @@ footer {
 }
 
 .hero-slider .slide {
-    opacity: 1; 
-    position: relative; 
+    opacity: 1;
+    position: relative;
     visibility: visible;
-    flex: 0 0 100%; 
+    flex: 0 0 100%;
     width: 100%;
     height: 100%;
     display: flex;
@@ -211,19 +254,22 @@ footer {
 }
 
 .hero-slider .hero-content {
-    max-width: 600px;
+    max-width: 760px;
     position: relative;
     z-index: 2;
 }
 
-.hero-slider .hero-content h1 {
+.hero-slider .hero-content h1,
+.hero-slider .hero-content h2,
+.hero-slider .hero-content .clone-heading {
     font-size: 3.2rem;
+    font-weight: 700;
     margin-bottom: 20px;
     line-height: 1.1;
     letter-spacing: 1px;
-    overflow-wrap: break-word; 
-    word-wrap: break-word; 
-    hyphens: auto; 
+    overflow-wrap: normal;
+    word-break: normal;
+    hyphens: auto;
 }
 
 .hero-slider .hero-content p {
@@ -241,24 +287,40 @@ footer {
     border: none;
     cursor: pointer;
     z-index: 10;
-    font-size: 50px; 
+    font-size: 50px;
     display: flex;
     align-items: center;
     justify-content: center;
     transition: all 0.2s ease;
     outline: none;
-    text-shadow: 0 2px 4px rgba(0,0,0,0.5); 
-    padding: 15px; 
+    text-shadow: 0 2px 4px rgba(0,0,0,0.5);
+    padding: 15px;
 }
 
 .slider-btn:hover {
     color: var(--bg-white);
-    transform: translateY(-50%) scale(1.1); 
+    transform: translateY(-50%) scale(1.1);
     background: transparent;
 }
 
 .prev-btn { left: 10px; }
 .next-btn { right: 10px; }
+
+.dot {
+    width: 14px;
+    height: 14px;
+    border: 2px solid var(--bg-white);
+    border-radius: 50%;
+    background-color: transparent;
+    cursor: pointer;
+    transition: background-color 0.3s ease;
+    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 0;
+}
+
+.dot.active {
+    background-color: var(--bg-white);
+}
 
 .slider-dots {
     position: absolute;
@@ -270,33 +332,18 @@ footer {
     z-index: 10;
 }
 
-.dot {
-    width: 14px;
-    height: 14px;
-    border: 2px solid var(--bg-white);
-    border-radius: 50%;
-    background-color: transparent;
-    cursor: pointer;
-    transition: background-color 0.3s ease;
-    box-shadow: 0 2px 4px rgba(0,0,0,0.3);
-}
-
-.dot.active {
-    background-color: var(--bg-white);
-}
-
 /* =========================================================
    MUU SISÄLTÖ (Esittely, Palvelut, Kartta)
    ========================================================= */
-.section { 
-    padding: 60px 0; 
+.section {
+    padding: 60px 0;
 }
 
-.section h2 { 
-    text-align: center; 
-    font-size: 2rem; 
-    margin-bottom: 10px; 
-    color: var(--text-darker); 
+.section h2 {
+    text-align: center;
+    font-size: 2rem;
+    margin-bottom: 10px;
+    color: var(--text-darker);
     text-transform: uppercase;
 }
 
@@ -353,7 +400,7 @@ footer {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
     gap: 25px;
     margin-top: 30px;
 }
@@ -363,16 +410,21 @@ footer {
     height: 370px;
     border-radius: 8px;
     overflow: hidden;
-    background-size: 100% auto;  
-    background-position:top center; 
-    background-repeat: no-repeat; 
-    background-color: var(--bg-hover); 
-    border: 1px solid var(--text-darker); 
+    background-size: 100% auto;
+    background-position:top center;
+    background-repeat: no-repeat;
+    background-color: var(--bg-hover);
+    border: 1px solid var(--text-darker);
     box-shadow: 0 3px 6px rgba(0,0,0,0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
 }
 
 .service-card:hover {
+    transform: translateY(-5px);
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+}
+
+.service-card:focus-within {
     transform: translateY(-5px);
     box-shadow: 0 10px 20px rgba(0,0,0,0.2);
 }
@@ -383,30 +435,30 @@ footer {
     left: 0;
     width: 100%;
     height: 100%;
-    
+
 /* UUSI MASKI: Läpinäkyvä 170px asti -> Sininen viiva 170-174px -> Harmaa alaosa */
     background: linear-gradient(
-        to bottom, 
-        transparent 0%, 
-        transparent 170px, 
-        var(--primary-blue) 170px, 
-        var(--primary-blue) 174px, 
-        var(--bg-hover) 174px, 
+        to bottom,
+        transparent 0%,
+        transparent 170px,
+        var(--primary-blue) 170px,
+        var(--primary-blue) 174px,
+        var(--bg-hover) 174px,
         var(--bg-hover) 100%
     );
-        
+
     padding: 20px;
     padding-top: 185px;
-    padding-bottom: 70px; 
+    padding-bottom: 70px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    text-align: center; 
+    justify-content: flex-start;
+    align-items: center;
+    text-align: center;
 }
 
 .service-card-title {
-    color: var(--text-black);  
+    color: var(--text-black);
     font-size: 1.25rem;
     font-weight: 700;
     margin-bottom: 5px;
@@ -414,7 +466,7 @@ footer {
 }
 
 .service-card-desc {
-    color: var(--text-black); 
+    color: var(--text-black);
     font-size: 0.95rem;
     line-height: 1.4;
     margin-bottom: 0;
@@ -423,17 +475,17 @@ footer {
 .read-more-btn {
     position: absolute;
     bottom: 20px;
-    left: 50%; 
-    transform: translateX(-50%); 
+    left: 50%;
+    transform: translateX(-50%);
     background-color: var(--primary-blue);
     color: var(--bg-white);
-    padding: 8px 24px; 
+    padding: 8px 24px;
     text-decoration: none;
     font-weight: 600;
     font-size: 0.9rem;
     border-radius: 4px;
     transition: background-color 0.2s;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 .read-more-btn:hover {
@@ -466,13 +518,32 @@ footer {
    ALASIVUJEN TYYLIT
    ========================================================= */
 .subpage-content {
-    max-width: 800px; 
+    max-width: 800px;
     margin: 60px auto;
     background-color: var(--bg-white);
     padding: 40px;
     border-radius: 8px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     border-top: 4px solid var(--primary-blue);
+}
+
+.subpage-hero {
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: var(--bg-white);
+    position: relative;
+    z-index: 10;
+}
+
+.subpage-hero h1 {
+    color: var(--bg-white);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
 }
 
 .subpage-content h2 {
@@ -554,14 +625,14 @@ footer {
 
 .news-card {
     display: flex;
-    flex-direction: row; 
+    flex-direction: row;
     background-color: var(--bg-white);
     border: 1px solid var(--border-color);
     border-radius: 8px;
-    padding: 30px; 
+    padding: 30px;
     box-shadow: 0 4px 10px rgba(0,0,0,0.05);
     transition: box-shadow 0.3s ease;
-    align-items: flex-start; 
+    align-items: flex-start;
 }
 
 .news-card:hover {
@@ -570,7 +641,7 @@ footer {
 
 .news-img {
     flex: 0 0 160px;
-    width: 160px; 
+    width: 160px;
     height: 160px;
     background-size: contain;
     background-position: top center;
@@ -578,20 +649,20 @@ footer {
     background-color: transparent;
     margin-right: 30px;
     margin-bottom: 0;
-    transition: all 0.3s ease; 
+    transition: all 0.3s ease;
 }
 
 .news-card.open {
-    flex-direction: column; 
+    flex-direction: column;
 }
 
 .news-card.open .news-img {
     flex: auto;
-    width: 100%; 
+    width: 100%;
     max-width: 100%;
     height: auto;
-    aspect-ratio: 16 / 9; 
-    background-size: cover; 
+    aspect-ratio: 16 / 9;
+    background-size: cover;
     background-position: center;
     margin-right: 0;
     margin-bottom: 25px;
@@ -599,7 +670,7 @@ footer {
 }
 
 .news-text-content {
-    padding: 0; 
+    padding: 0;
     flex: 1;
     display: flex;
     flex-direction: column;
@@ -634,7 +705,7 @@ footer {
 }
 
 .news-toggle-btn {
-    align-self: flex-start; 
+    align-self: flex-start;
     background-color: var(--primary-blue);
     color: var(--bg-white);
     border: none;
@@ -649,6 +720,15 @@ footer {
 
 .news-toggle-btn:hover {
     background-color: var(--primary-blue-hover);
+}
+
+.news-toggle-btn[aria-expanded="true"] {
+    background-color: var(--text-muted);
+}
+
+.news-full[hidden],
+.news-excerpt[hidden] {
+    display: none;
 }
 
 .news-cta-box {
@@ -674,7 +754,7 @@ footer {
 }
 
 .pricing-table-container h2 {
-    color: var(--primary-blue); 
+    color: var(--primary-blue);
     font-size: 1.6rem;
     margin-bottom: 15px;
     border-bottom: 2px solid var(--border-color);
@@ -704,13 +784,13 @@ footer {
 }
 
 .pricing-table tr:hover {
-    background-color: var(--bg-hover); 
+    background-color: var(--bg-hover);
 }
 
 .price-col {
     text-align: right;
     font-weight: 700;
-    white-space: nowrap; 
+    white-space: nowrap;
 }
 
 /* =========================================================
@@ -718,34 +798,33 @@ footer {
    ========================================================= */
 .scrolling-truck-container {
     position: fixed;
-    bottom: 10%; 
-    left: -1200px; 
-    height: -850px;
+    bottom: 10%;
+    left: -1200px;
     width: 100%;
     z-index: 5;
-    pointer-events: none; 
-    opacity: 0.25; 
+    pointer-events: none;
+    opacity: 0.25;
 }
 
 .scrolling-truck {
     height: 600px;
-    width: auto; 
+    width: auto;
     transform: translateX(0);
-    will-change: transform; 
+    will-change: transform;
     z-index: 5;
 }
 
 .scrolling-pylon {
     position: fixed;
-    height: 850px; 
+    height: 850px;
     width: 100%;
     pointer-events: none;
-    
+
 }
 
 .back-pylon {
-    z-index: 4; 
-    right: -50%; 
+    z-index: 4;
+    right: -50%;
     height: 600px;
     width: auto;
     bottom: 20%;
@@ -755,8 +834,8 @@ footer {
 }
 
 .front-pylon {
-    z-index: 6; 
-    right: -100%; 
+    z-index: 6;
+    right: -100%;
     height: 800px;
     width: auto;
     bottom: 10%;
@@ -768,42 +847,42 @@ footer {
 /* =========================================================
    FOOTER
    ========================================================= */
-.footer { 
+.footer {
     position: relative;
     background: linear-gradient(rgba(32, 33, 36, 0.90), rgba(32, 33, 36, 0.90)), url('tausta2.webp') no-repeat center center;
     background-size: cover;
-    color: var(--bg-white); 
-    padding: 50px 0 20px; 
-    text-align: center; 
+    color: var(--bg-white);
+    padding: 50px 0 20px;
+    text-align: center;
     z-index: 10;
 }
 
-.footer-info { 
-    display: flex; 
-    justify-content: space-around; 
-    flex-wrap: wrap; 
-    gap: 20px; 
-    margin-bottom: 30px; 
+.footer-info {
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    gap: 20px;
+    margin-bottom: 30px;
 }
 
 .footer h2 { margin-bottom: 30px; }
 .footer h3 { margin-bottom: 10px; color: var(--bg-white); }
 
-.footer a { 
-    color: #8ab4f8; 
-    text-decoration: none; 
-    font-weight: bold; 
-    transition: color 0.2s; 
+.footer a {
+    color: #8ab4f8;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.2s;
 }
 
 .footer a:hover { color: #d2e3fc; }
 
-.copyright { 
-    margin-top: 40px; 
-    font-size: 0.9rem; 
-    color: #9aa0a6; 
-    border-top: 1px solid var(--text-dark); 
-    padding-top: 20px; 
+.copyright {
+    margin-top: 40px;
+    font-size: 0.9rem;
+    color: #9aa0a6;
+    border-top: 1px solid var(--text-dark);
+    padding-top: 20px;
 }
 
 /* =========================================================
@@ -811,35 +890,99 @@ footer {
    ========================================================= */
 @media (max-width: 768px) {
     .nav-container {
-        flex-direction: column;
-        gap: 15px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px 20px;
     }
-    
-    .nav-links-right {
-        flex-wrap: wrap;
+
+    .nav-toggle {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
         justify-content: center;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
     }
-    
+
+    .nav-toggle-icon,
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+        width: 26px;
+        height: 3px;
+        display: block;
+        background: var(--text-darker);
+        border-radius: 2px;
+    }
+
+    .nav-toggle-icon {
+        position: relative;
+    }
+
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+        content: '';
+        position: absolute;
+        left: 0;
+    }
+
+    .nav-toggle-icon::before { top: -8px; }
+    .nav-toggle-icon::after { top: 8px; }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+        background: transparent;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    .nav-links-right {
+        display: none;
+        grid-column: 1 / -1;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding-top: 5px;
+    }
+
+    .nav-links-right.is-open {
+        display: flex;
+    }
+
+    .nav-links-right > li > a,
+    .nav-links-right > li > .dropbtn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 8px;
+    }
+
     .hero-slider {
         height: 450px;
     }
-  
+
     .hero-slider .hero-content {
         max-width: 100%;
         text-align: center;
         padding: 0 20px;
     }
-    
-    .hero-slider .hero-content h1 {
+
+    .hero-slider .hero-content h1,
+    .hero-slider .hero-content h2,
+    .hero-slider .hero-content .clone-heading {
         font-size: 2.2rem;
     }
-    
+
     .hero-slider .hero-content p {
         font-size: 1rem;
-    }
-
-    .hero-slider .slide {
-        background-image: linear-gradient(rgba(32, 33, 36, 0.7), rgba(32, 33, 36, 0.7)), inherit;
     }
 
     .slider-btn {
@@ -849,75 +992,91 @@ footer {
         width: auto;
         height: auto;
     }
-    
+
     .prev-btn { left: 0px; }
     .next-btn { right: 0px; }
-    
+
     .intro-container {
         flex-direction: column;
         gap: 30px;
     }
-    
+
     .intro-contact {
         width: 100%;
     }
-    
-    .footer-info { 
-        flex-direction: column; 
+    .footer-info {
+        flex-direction: column;
         gap: 30px;
     }
-    
-    .dropdown-content { 
-        position: static; 
-        width: 100%; 
+    .dropdown-content {
+        position: static;
+        width: 100%;
     }
-    
+
+    .dropdown:hover .dropdown-content,
+    .dropdown:focus-within .dropdown-content {
+        display: none;
+    }
+
+    .dropdown.is-open .dropdown-content {
+        display: block;
+    }
+
     .map-container {
         flex-direction: column;
         gap: 20px;
         padding: 20px;
     }
-    
+
     .map-embed iframe {
-        height: 250px; 
+        height: 250px;
     }
-    
+
     .services-grid {
-        grid-template-columns: 1fr; 
+        grid-template-columns: 1fr;
         gap: 20px;
     }
-    
+
     .news-card {
         flex-direction: column;
         padding: 20px;
     }
-    
+
     .news-img {
         margin-right: 0;
         margin-bottom: 20px;
     }
-    
     .subpage-content {
-        padding: 20px; 
+        padding: 20px;
     }
-    
+
+    .subpage-hero {
+        min-height: 150px;
+        padding: 25px 20px;
+        text-align: center;
+    }
+
+    .subpage-hero h1 {
+        font-size: 2rem;
+    }
+
     .pricing-table th, .pricing-table td {
-        padding: 10px 5px; 
+        padding: 10px 5px;
     }
-    
+
     .subpage-grid {
         flex-direction: column;
         gap: 30px;
     }
 
     .back-pylon {
-        height: 30%; 
-        right: -200px; 
+        height: 30%;
+        right: -200px;
     }
-    
+
     .front-pylon {
-        height: 45%; 
-        right: -600px; 
+        height: 45%;
+        right: -600px;
     }
 
     .scrolling-truck-container {
@@ -927,5 +1086,24 @@ footer {
     .scrolling-truck {
         width: 500px;
         height: auto;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    html {
+        scroll-behavior: auto;
+    }
+
+    .slider-track,
+    .service-card,
+    .arrow,
+    .nav-links-right > li > a::after,
+    .nav-links-right > li > .dropbtn::after {
+        transition: none;
+    }
+
+    .scrolling-truck-container,
+    .scrolling-pylon {
+        display: none;
     }
 }

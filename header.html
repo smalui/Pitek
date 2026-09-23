@@ -1,13 +1,18 @@
  <header class="navbar-white">
         <div class="container nav-container">
             <a href="index.html" class="logo-link">
-                <img src="Pitekoylogo2026.webp" alt="Pitek Oy Logo" class="nav-logo">
+                <img src="Pitekoylogo2026.webp" alt="Pitek Oy" class="nav-logo" width="400" height="113">
             </a>
+
+            <button class="nav-toggle" type="button" aria-expanded="false" aria-controls="primary-navigation">
+                <span class="sr-only">Avaa päävalikko</span>
+                <span class="nav-toggle-icon" aria-hidden="true"></span>
+            </button>
             
-            <ul class="nav-links-right">
+            <ul class="nav-links-right" id="primary-navigation">
                 <li class="dropdown">
-                    <span class="dropbtn">Palvelut <span class="arrow">▼</span></span>
-                    <div class="dropdown-content">
+                    <button class="dropbtn" type="button" aria-expanded="false" aria-controls="services-menu">Palvelut <span class="arrow" aria-hidden="true">▼</span></button>
+                    <div class="dropdown-content" id="services-menu">
                         <a href="nopeudenrajoittimen-tarkastus.html">Nopeudenrajoittimen tarkastukset</a>
                         <a href="ajopiirturin-kalibrointi.html">Ajopiirturin kalibrointi</a>
                         <a href="alkolukot.html">Alkolukot ja alkometrit</a>
