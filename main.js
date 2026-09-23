@@ -167,29 +167,61 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 // 1. Laitetaan koodi paikalleen
                 headerPlaceholder.innerHTML = data;
+
+                const navToggle = document.querySelector(".nav-toggle");
+                const navigation = document.querySelector(".nav-links-right");
+
+                if (navToggle && navigation) {
+                    navToggle.addEventListener("click", () => {
+                        const isOpen = navigation.classList.toggle("is-open");
+
+                        navToggle.setAttribute("aria-expanded", String(isOpen));
+                        navToggle.setAttribute(
+                            "aria-label",
+                            isOpen ? "Sulje päävalikko" : "Avaa päävalikko"
+                        );
+                    });
+                }
                 
                 // 2. Käynnistetään rullausominaisuus vasta kun palkki on olemassa
                 const navbar = document.querySelector('.navbar-white');
                 if (navbar) {
-                    let lastScrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                    let currentTranslateY = 0; 
+                    let lastScrollTop =
+                        window.pageYOffset || document.documentElement.scrollTop;
 
-                    window.addEventListener('scroll', function() {
-                        let scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-                        let navbarHeight = navbar.offsetHeight; 
-                        
-                        let scrollDelta = scrollTop - lastScrollTop;
-                        currentTranslateY -= scrollDelta;
-                        
-                        if (currentTranslateY > 0) {
-                            currentTranslateY = 0;
-                        } else if (currentTranslateY < -navbarHeight) {
-                            currentTranslateY = -navbarHeight;
-                        }
+                    window.addEventListener(
+                        "scroll",
+                        function () {
+                            const scrollTop = Math.max(
+                                window.pageYOffset ||
+                                    document.documentElement.scrollTop,
+                                0
+                            );
 
-                        navbar.style.transform = `translateY(${currentTranslateY}px)`;
-                        lastScrollTop = scrollTop <= 0 ? 0 : scrollTop; 
-                    });
+                            const navigation =
+                                document.querySelector(".nav-links-right");
+
+                            const menuIsOpen =
+                                navigation &&
+                                navigation.classList.contains("is-open");
+
+                            if (
+                                scrollTop <= navbar.offsetHeight ||
+                                scrollTop < lastScrollTop ||
+                                menuIsOpen
+                            ) {
+                                // Sivun alussa, ylöspäin rullatessa tai
+                                // mobiilivalikon ollessa auki.
+                                navbar.style.transform = "translateY(0)";
+                            } else if (scrollTop > lastScrollTop) {
+                                // Alaspäin rullatessa piilotetaan palkki.
+                                navbar.style.transform = "translateY(-100%)";
+                            }
+
+                            lastScrollTop = scrollTop;
+                        },
+                        { passive: true }
+                    );
                 }
             })
             .catch(error => console.error('Virhe headerin latauksessa:', error));

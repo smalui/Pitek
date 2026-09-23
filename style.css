@@ -58,11 +58,20 @@ footer {
 /* =========================================================
    YLÄPALKKI JA VALIKOT
    ========================================================= */
-.navbar-white {
-    background-color: var(--bg-white);
+#header-placeholder {
     position: sticky;
     top: 0;
     z-index: 1000;
+}
+
+.navbar-white {
+    position: relative;
+    transition: transform 0.25s ease;
+    will-change: transform;
+}
+
+.navbar-white {
+    background-color: var(--bg-white);
     padding: 10px 0;
     box-shadow: 0 2px 8px rgba(0,0,0,0.1);
     border-bottom: 3px solid var(--primary-blue);
@@ -279,6 +288,7 @@ footer {
     cursor: pointer;
     transition: background-color 0.3s ease;
     box-shadow: 0 2px 4px rgba(0,0,0,0.3);
+    padding: 0;
 }
 
 .dot.active {
@@ -465,6 +475,26 @@ footer {
 /* =========================================================
    ALASIVUJEN TYYLIT
    ========================================================= */
+.subpage-hero {
+    min-height: 220px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    background-size: cover;
+    background-position: center;
+    color: var(--bg-white);
+    position: relative;
+    z-index: 10;
+}
+
+.subpage-hero h1 {
+    margin: 0;
+    color: var(--bg-white);
+    font-size: 2.5rem;
+    text-transform: uppercase;
+    text-shadow: 0 2px 6px rgba(0, 0, 0, 0.65);
+}
+
 .subpage-content {
     max-width: 800px; 
     margin: 60px auto;
@@ -806,18 +836,94 @@ footer {
     padding-top: 20px; 
 }
 
+.nav-toggle {
+    display: none;
+}
+
 /* =========================================================
    MOBIILIOPTIMOINTI KOOSTETUSTI (Puhelimet ja tabletit alle 768px)
    ========================================================= */
 @media (max-width: 768px) {
+
     .nav-container {
-        flex-direction: column;
-        gap: 15px;
+        display: grid;
+        grid-template-columns: 1fr auto;
+        gap: 10px 20px;
     }
-    
-    .nav-links-right {
-        flex-wrap: wrap;
+
+    .nav-toggle {
+        display: flex;
+        width: 44px;
+        height: 44px;
+        align-items: center;
         justify-content: center;
+        border: 0;
+        background: transparent;
+        cursor: pointer;
+    }
+
+    .nav-toggle-icon,
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+        display: block;
+        width: 26px;
+        height: 3px;
+        background: var(--text-darker);
+        border-radius: 2px;
+    }
+
+    .nav-toggle-icon {
+        position: relative;
+    }
+
+    .nav-toggle-icon::before,
+    .nav-toggle-icon::after {
+        content: "";
+        position: absolute;
+        left: 0;
+    }
+
+    .nav-toggle-icon::before {
+        top: -8px;
+    }
+
+    .nav-toggle-icon::after {
+        top: 8px;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon {
+        background: transparent;
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon::before {
+        top: 0;
+        transform: rotate(45deg);
+    }
+
+    .nav-toggle[aria-expanded="true"] .nav-toggle-icon::after {
+        top: 0;
+        transform: rotate(-45deg);
+    }
+
+    .nav-links-right {
+        display: none;
+        grid-column: 1 / -1;
+        width: 100%;
+        flex-direction: column;
+        align-items: stretch;
+        gap: 0;
+        padding-top: 5px;
+    }
+
+    .nav-links-right.is-open {
+        display: flex;
+    }
+
+    .nav-links-right > li > a,
+    .nav-links-right > li > .dropbtn {
+        width: 100%;
+        text-align: center;
+        padding: 12px 8px;
     }
     
     .hero-slider {
@@ -895,6 +1001,16 @@ footer {
     .news-img {
         margin-right: 0;
         margin-bottom: 20px;
+    }
+    
+    .subpage-hero {
+    min-height: 150px;
+    padding: 25px 20px;
+    text-align: center;
+    }
+
+    .subpage-hero h1 {
+        font-size: 2rem;
     }
     
     .subpage-content {
