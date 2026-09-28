@@ -3,7 +3,7 @@ document.addEventListener('DOMContentLoaded', function() {
     //PUHELINNUMERON KOODI
     const businessPhone = "+358504535130";
 
-    document.querySelectorAll("[data-phone-link").forEach(link =>{
+    document.querySelectorAll("[data-phone-link]").forEach(link =>{
         link.href = `tel:${businessPhone}`;
     });
 
@@ -14,6 +14,17 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(response => response.text())
             .then(data => {
                 footerPlaceholder.innerHTML = data;
+
+                if (window.location.hash === "#yhteystiedot") {
+                    requestAnimationFrame(() => {
+                        const contactSection =
+                            document.getElementById("yhteystiedot");
+
+                        if (contactSection) {
+                            contactSection.scrollIntoView();
+                        }
+                    });
+                }
             })
             .catch(error => console.error('Virhe footerin latauksessa:', error));
     }
@@ -172,21 +183,81 @@ document.addEventListener('DOMContentLoaded', function() {
         fetch('header.html')
             .then(response => response.text())
             .then(data => {
-                // 1. Laitetaan koodi paikalleen
+                
                 headerPlaceholder.innerHTML = data;
 
                 const navToggle = document.querySelector(".nav-toggle");
                 const navigation = document.querySelector(".nav-links-right");
 
+                const dropdown = document.querySelector(".dropdown");
+                const dropdownButton = document.querySelector(".dropbtn");
+
+                function closeDropdown() {
+                    if (!dropdown || !dropdownButton) return;
+
+                    dropdown.classList.remove("is-open");
+                    dropdownButton.setAttribute("aria-expanded", "false");
+                }
+
                 if (navToggle && navigation) {
                     navToggle.addEventListener("click", () => {
-                        const isOpen = navigation.classList.toggle("is-open");
+                        const isOpen =
+                            navigation.classList.toggle("is-open");
 
-                        navToggle.setAttribute("aria-expanded", String(isOpen));
+                        navToggle.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
+
                         navToggle.setAttribute(
                             "aria-label",
-                            isOpen ? "Sulje päävalikko" : "Avaa päävalikko"
+                            isOpen
+                                ? "Sulje päävalikko"
+                                : "Avaa päävalikko"
                         );
+
+                        if (!isOpen) {
+                            closeDropdown();
+                        }
+                    });
+                }
+                if (dropdown && dropdownButton) {
+                    dropdownButton.addEventListener("click", event => {
+                        if (!window.matchMedia("(max-width: 768px)").matches) {
+                            return;
+                        }
+
+                        event.preventDefault();
+
+                        const isOpen =
+                            dropdown.classList.toggle("is-open");
+
+                        dropdownButton.setAttribute(
+                            "aria-expanded",
+                            String(isOpen)
+                        );
+                    });
+                }
+
+                if (navigation) {
+                    navigation.querySelectorAll("a").forEach(link => {
+                        link.addEventListener("click", () => {
+                            navigation.classList.remove("is-open");
+
+                            if (navToggle) {
+                                navToggle.setAttribute(
+                                    "aria-expanded",
+                                    "false"
+                                );
+
+                                navToggle.setAttribute(
+                                    "aria-label",
+                                    "Avaa päävalikko"
+                                );
+                            }
+
+                            closeDropdown();
+                        });
                     });
                 }
                 
@@ -235,44 +306,114 @@ document.addEventListener('DOMContentLoaded', function() {
     }
 
   // 5. RULLAAVA TAUSTA (Auto ja pylväät)
-    const truck = document.querySelector('.scrolling-truck');
-    const pylons = document.querySelectorAll('.scrolling-pylon');
+    const truck =
+        document.querySelector(".scrolling-truck");
 
-    // Ajetaan skripti vain, jos sivulla on rekka TAI pylväitä
+    const pylons =
+        document.querySelectorAll(".scrolling-pylon");
+
     if (truck || pylons.length > 0) {
-        window.addEventListener('scroll', function() {
-            const scrollTop = window.pageYOffset || document.documentElement.scrollTop;
-            const scrollHeight = document.documentElement.scrollHeight - document.documentElement.clientHeight;
-            
-            if (scrollHeight <= 0) return;
-            
-            const scrollPercent = scrollTop / scrollHeight;
-            const windowWidth = window.innerWidth;
-            
-            // 1. Rekan liike (Vasemmalta oikealle)
-            if (truck) {
-                const truckWidth = truck.clientWidth || 800;
-                const maxMoveTruck = windowWidth + truckWidth + 800; 
-                const moveX = scrollPercent * maxMoveTruck;
-                truck.style.transform = `translateX(${moveX}px)`;
+        let layoutWidth =
+            document.documentElement.clientWidth;
+
+        let layoutHeight =
+            document.documentElement.clientHeight;
+
+        let scrollRange =
+            document.documentElement.scrollHeight -
+            layoutHeight;
+
+        let updateRequested = false;
+
+        function updateBackgroundGraphics() {
+            updateRequested = false;
+
+            if (
+                window.visualViewport &&
+                Math.abs(window.visualViewport.scale - 1) > 0.01
+            ) {
+                return;
             }
 
-            // 2. Pylväiden liike (Oikealta vasemmalle)
-            if (pylons.length > 0) {
-                pylons.forEach(pylon => {
-                    const pylonWidth = pylon.clientWidth || 200;
-                    const maxMovePylon = windowWidth + pylonWidth + 800;
-                    const moveXPylon = -(scrollPercent * maxMovePylon); 
-                    
-                    // Jos kyseessä on etummainen pylväs, käännetään se peilikuvaksi (scaleX(-1))
-                    if (pylon.classList.contains('front-pylon')) {
-                        pylon.style.transform = `translateX(${moveXPylon}px) scaleX(-1)`;
-                    } else {
-                        pylon.style.transform = `translateX(${moveXPylon}px)`;
-                    }
-                });
+            const scrollTop =
+                window.pageYOffset ||
+                document.documentElement.scrollTop;
+
+            if (scrollRange <= 0) return;
+
+            const scrollPercent =
+                Math.min(1, Math.max(0, scrollTop / scrollRange));
+
+            if (truck) {
+                const truckWidth =
+                    truck.clientWidth || 800;
+
+                const maxMoveTruck =
+                    layoutWidth + truckWidth + 800;
+
+                const moveX =
+                    scrollPercent * maxMoveTruck;
+
+                truck.style.transform =
+                    "translateX(" + moveX + "px)";
             }
+
+            pylons.forEach(pylon => {
+                const pylonWidth =
+                    pylon.clientWidth || 200;
+
+                const maxMovePylon =
+                    layoutWidth + pylonWidth + 800;
+
+                const moveX =
+                    -(scrollPercent * maxMovePylon);
+
+                if (
+                    pylon.classList.contains("front-pylon")
+                ) {
+                    pylon.style.transform =
+                        "translateX(" +
+                        moveX +
+                        "px) scaleX(-1)";
+                } else {
+                    pylon.style.transform =
+                        "translateX(" +
+                        moveX +
+                        "px)";
+                }
+            });
+        }
+
+        function requestGraphicsUpdate() {
+            if (updateRequested) return;
+
+            updateRequested = true;
+            requestAnimationFrame(updateBackgroundGraphics);
+        }
+
+        window.addEventListener(
+            "scroll",
+            requestGraphicsUpdate,
+            { passive: true }
+        );
+
+        window.addEventListener("orientationchange", () => {
+            setTimeout(() => {
+                layoutWidth =
+                    document.documentElement.clientWidth;
+
+                layoutHeight =
+                    document.documentElement.clientHeight;
+
+                scrollRange =
+                    document.documentElement.scrollHeight -
+                    layoutHeight;
+
+                requestGraphicsUpdate();
+            }, 250);
         });
+
+        requestGraphicsUpdate();
     }
     // 6. UUTISTEN AVAA/SULJE -LOGIIKKA (Ajetaan vain sivuilla joissa on uutisia)
     const newsButtons = document.querySelectorAll('.news-toggle-btn');
