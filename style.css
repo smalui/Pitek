@@ -181,11 +181,14 @@ footer {
 }
 
 /* =========================================================
-   KONFLIKTIVAPAA HERO SLIDER 
+   HERO SLIDER 
    ========================================================= */
 .hero-slider {
     position: relative;
     height: 550px;
+    width:100%;
+    max-width: 1100px;
+    margin: 0 auto;
     overflow: hidden;
     background-color: var(--text-darker);
     touch-action: pan-y; 
@@ -866,6 +869,30 @@ footer {
     font-family: inherit;
 }
 
+/* sanat pysyy laatikoissaa. */
+.subpage-content,
+.subpage-grid,
+.subpage-col,
+.subpage-cta {
+    min-width: 0;
+    max-width: 100%;
+}
+
+.subpage-content h1,
+.subpage-content h2,
+.subpage-content h3 {
+    -webkit-hyphens: auto;
+    hyphens: auto;
+}
+.subpage-content p,
+.subpage-content li,
+.subpage-content a {
+    max-width: 100%;
+    overflow-wrap: anywhere;
+    word-break: normal;
+}
+
+
 /* =========================================================
    MOBIILIOPTIMOINTI KOOSTETUSTI (Puhelimet ja tabletit alle 768px)
    ========================================================= */
@@ -953,7 +980,13 @@ footer {
     }
     
     .hero-slider {
-        height: 450px;
+    height: auto;
+    aspect-ratio: 1.6 / 1;
+    }
+
+    .slider-track {
+        position: absolute;
+        inset: 0;
     }
   
     .hero-slider .hero-content {
@@ -963,11 +996,14 @@ footer {
     }
     
     .hero-slider .hero-content h1 {
-        font-size: 2.2rem;
+    font-size: 1.5rem;
+    line-height: 1.15;
+    margin-bottom: 10px;
     }
     
-    .hero-slider .hero-content p {
-        font-size: 1rem;
+   .hero-slider .hero-content p {
+    font-size: 0.9rem;
+    line-height: 1.4;
     }
 
     .hero-slider .slide {
@@ -1065,6 +1101,7 @@ footer {
     }
 
     .scrolling-truck {
+        height: calc(var(--truck-scene-size) * 0.75);
     }
 
     .dropdown:hover .dropdown-content {
@@ -1074,10 +1111,19 @@ footer {
     .dropdown.is-open .dropdown-content {
         display: block;
     }
+    
+    /* Suljettu valikko: nuoli alaspäin myös hover-tilassa */
+    .dropdown .arrow,
+    .dropdown:hover .arrow {
+        transform: rotate(0deg);
+    }
 
-    .dropdown.is-open .arrow {
+    /* Avoin valikko: nuoli ylöspäin */
+    .dropdown.is-open .arrow,
+    .dropdown.is-open:hover .arrow {
         transform: rotate(180deg);
     }
+
 }
 
 #yhteystiedot {
