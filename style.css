@@ -181,14 +181,14 @@ footer {
 }
 
 /* =========================================================
-   HERO SLIDER 
+   KONFLIKTIVAPAA HERO SLIDER 
    ========================================================= */
 .hero-slider {
     position: relative;
-    height: 550px;
-    width:100%;
+    width: 100%;
     max-width: 1100px;
     margin: 0 auto;
+    height: 550px;
     overflow: hidden;
     background-color: var(--text-darker);
     touch-action: pan-y; 
@@ -223,9 +223,9 @@ footer {
 }
 
 .hero-slider .hero-content {
-    max-width: 600px;
-    position: relative;
-    z-index: 2;
+    max-width: 100%;
+    text-align: center;
+    padding: 0 20px;
 }
 
 .hero-slider .hero-content h1 {
@@ -366,23 +366,42 @@ footer {
 
 .services-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr); 
+    grid-template-columns: repeat(3, 1fr);
+    grid-auto-rows: 1fr; 
+    align-items: stretch;
     gap: 25px;
     margin-top: 30px;
 }
 
 .service-card {
     position: relative;
-    height: 370px;
-    border-radius: 8px;
+    min-width: 0;
+    height: auto;
+    display: flex;
+    flex-direction: column;
+    border-radius: 16px;
     overflow: hidden;
-    background-size: 100% auto;  
-    background-position:top center; 
-    background-repeat: no-repeat; 
-    background-color: var(--bg-hover); 
-    border: 1px solid var(--text-darker); 
-    box-shadow: 0 3px 6px rgba(0,0,0,0.15);
+    background-size: 0 0;
+    background-position: top center;
+    background-repeat: no-repeat;
+    background-color: var(--bg-hover);
+    border: 1px solid var(--text-darker);
+    box-shadow: 0 3px 6px rgba(0, 0, 0, 0.15);
     transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.service-card::before {
+    content: "";
+    display: block;
+    aspect-ratio: 148 / 102;
+    background-image: inherit;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    border-radius: 16px;
+    border-bottom: 4px solid var(--primary-blue);
+    box-sizing: border-box;
+    flex-shrink: 0;
 }
 
 .service-card:hover {
@@ -391,46 +410,35 @@ footer {
 }
 
 .service-card-overlay {
-    position: absolute;
-    top: 0;
-    left: 0;
+    position: static;
     width: 100%;
-    height: 100%;
-    
-/* UUSI MASKI: Läpinäkyvä 170px asti -> Sininen viiva 170-174px -> Harmaa alaosa */
-    background: linear-gradient(
-        to bottom, 
-        transparent 0%, 
-        transparent 170px, 
-        var(--primary-blue) 170px, 
-        var(--primary-blue) 174px, 
-        var(--bg-hover) 174px, 
-        var(--bg-hover) 100%
-    );
-        
-    padding: 20px;
-    padding-top: 185px;
-    padding-bottom: 70px; 
+    height: auto;
+    min-height: 0;
+    flex: 1;
+    background: var(--bg-hover);
+    border-radius: 0 0 16px 16px;
+    padding: 14px 16px;
     display: flex;
     flex-direction: column;
-    justify-content: flex-start; 
-    align-items: center; 
-    text-align: center; 
+    align-items: center;
+    text-align: center;
 }
 
+
 .service-card-title {
-    color: var(--text-black);  
-    font-size: 1.25rem;
+    color: var(--text-black);
+    font-size: 1.15rem;
     font-weight: 700;
-    margin-bottom: 5px;
-    line-height: 1.3;
+    margin-bottom: 6px;
+    line-height: 1.25;
 }
 
 .service-card-desc {
-    color: var(--text-black); 
-    font-size: 0.95rem;
-    line-height: 1.4;
+    color: var(--text-black);
+    font-size: 0.9rem;
+    line-height: 1.35;
     margin-bottom: 0;
+    margin-bottom: 12px;
 }
 
 .read-more-btn {
@@ -447,6 +455,16 @@ footer {
     border-radius: 4px;
     transition: background-color 0.2s;
     white-space: nowrap; 
+}
+
+.service-card .read-more-btn {
+    position: static;
+    left: auto;
+    bottom: auto;
+    transform: none;
+    margin-top: auto;
+    flex-shrink: 0;
+    padding: 7px 18px;
 }
 
 .read-more-btn:hover {
@@ -868,8 +886,6 @@ footer {
     border: 0;
     font-family: inherit;
 }
-
-/* sanat pysyy laatikoissaa. */
 .subpage-content,
 .subpage-grid,
 .subpage-col,
@@ -884,6 +900,7 @@ footer {
     -webkit-hyphens: auto;
     hyphens: auto;
 }
+
 .subpage-content p,
 .subpage-content li,
 .subpage-content a {
@@ -891,7 +908,6 @@ footer {
     overflow-wrap: anywhere;
     word-break: normal;
 }
-
 
 /* =========================================================
    MOBIILIOPTIMOINTI KOOSTETUSTI (Puhelimet ja tabletit alle 768px)
@@ -988,22 +1004,16 @@ footer {
         position: absolute;
         inset: 0;
     }
-  
-    .hero-slider .hero-content {
-        max-width: 100%;
-        text-align: center;
-        padding: 0 20px;
-    }
-    
+
     .hero-slider .hero-content h1 {
-    font-size: 1.5rem;
-    line-height: 1.15;
-    margin-bottom: 10px;
+        font-size: 1.5rem;
+        line-height: 1.15;
+        margin-bottom: 10px;
     }
-    
-   .hero-slider .hero-content p {
-    font-size: 0.9rem;
-    line-height: 1.4;
+
+    .hero-slider .hero-content p {
+        font-size: 0.9rem;
+        line-height: 1.4;
     }
 
     .hero-slider .slide {
@@ -1053,6 +1063,8 @@ footer {
     .services-grid {
         grid-template-columns: 1fr; 
         gap: 20px;
+        width:90%;
+        margin-inline: auto;
     }
     
     .news-card {
@@ -1066,9 +1078,9 @@ footer {
     }
 
     .subpage-hero {
-    min-height: 150px;
-    padding: 25px 20px;
-    text-align: center;
+        min-height: 150px;
+        padding: 25px 20px;
+        text-align: center;
     }
 
     .subpage-hero h1 {
@@ -1096,14 +1108,10 @@ footer {
         right: -600px; 
     }
 
-    .scrolling-truck-container {
-        left: -600px;
-    }
-
     .scrolling-truck {
         height: calc(var(--truck-scene-size) * 0.75);
     }
-
+    
     .dropdown:hover .dropdown-content {
     display: none;
     }
@@ -1111,19 +1119,16 @@ footer {
     .dropdown.is-open .dropdown-content {
         display: block;
     }
-    
-    /* Suljettu valikko: nuoli alaspäin myös hover-tilassa */
+
     .dropdown .arrow,
     .dropdown:hover .arrow {
         transform: rotate(0deg);
     }
 
-    /* Avoin valikko: nuoli ylöspäin */
     .dropdown.is-open .arrow,
     .dropdown.is-open:hover .arrow {
         transform: rotate(180deg);
     }
-
 }
 
 #yhteystiedot {
