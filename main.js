@@ -305,7 +305,7 @@ document.addEventListener('DOMContentLoaded', function() {
             .catch(error => console.error('Virhe headerin latauksessa:', error));
     }
 
-  // 5. RULLAAVA TAUSTA (Auto ja pylväät)
+    // 5. RULLAAVA TAUSTA (Auto ja pylväät)
     const truck =
         document.querySelector(".scrolling-truck");
 
@@ -326,63 +326,98 @@ document.addEventListener('DOMContentLoaded', function() {
         let updateRequested = false;
 
         function updateBackgroundGraphics() {
-            updateRequested = false;
+        updateRequested = false;
 
-            if (
-                window.visualViewport &&
-                Math.abs(window.visualViewport.scale - 1) > 0.01
-            ) {
-                return;
-            }
-
-            const scrollTop =
-                window.pageYOffset ||
-                document.documentElement.scrollTop;
-
-            if (scrollRange <= 0) return;
-
-            const scrollPercent =
-                Math.min(1, Math.max(0, scrollTop / scrollRange));
-
-            if (truck) {
-                const truckWidth =
-                    truck.clientWidth || 800;
-
-                const maxMoveTruck =
-                    layoutWidth + truckWidth + 800;
-
-                const moveX =
-                    scrollPercent * maxMoveTruck;
-
-                truck.style.transform =
-                    "translateX(" + moveX + "px)";
-            }
-
-            pylons.forEach(pylon => {
-                const pylonWidth =
-                    pylon.clientWidth || 200;
-
-                const maxMovePylon =
-                    layoutWidth + pylonWidth + 800;
-
-                const moveX =
-                    -(scrollPercent * maxMovePylon);
-
-                if (
-                    pylon.classList.contains("front-pylon")
-                ) {
-                    pylon.style.transform =
-                        "translateX(" +
-                        moveX +
-                        "px) scaleX(-1)";
-                } else {
-                    pylon.style.transform =
-                        "translateX(" +
-                        moveX +
-                        "px)";
-                }
-            });
+        if (
+            window.visualViewport &&
+            Math.abs(window.visualViewport.scale - 1) > 0.01
+        ) {
+            return;
         }
+
+        const currentWidth =
+            document.documentElement.clientWidth;
+
+        // Päivitä mitat leveyden muuttuessa.
+        // Puhelimen selainpalkin liike ei muuta näitä mittoja.
+        if (currentWidth !== layoutWidth) {
+            layoutWidth = currentWidth;
+            layoutHeight =
+                document.documentElement.clientHeight;
+        }
+
+        // Sivun korkeus voi muuttua kuvien ja sisällön latautuessa.
+        scrollRange =
+            document.documentElement.scrollHeight - layoutHeight;
+
+        const scrollTop =
+            window.scrollY ||
+            document.documentElement.scrollTop;
+
+        const scrollPercent = scrollRange > 0
+            ? Math.min(1, Math.max(0, scrollTop / scrollRange))
+            : 0;
+
+        const edgeMargin = 40;
+
+        // Selvitä elementin nykyinen vaakasuuntainen siirtymä.
+        function getTranslateX(element) {
+            const transform =
+                getComputedStyle(element).transform;
+
+            return transform === "none"
+                ? 0
+                : new DOMMatrixReadOnly(transform).m41;
+        }
+
+        if (truck) {
+            const rect = truck.getBoundingClientRect();
+
+            // Alkuperäinen sijainti ilman animaation siirtymää.
+            const startLeft =
+                rect.left - getTranslateX(truck);
+
+            // Lopussa rekan vasenkin reuna on näytön oikealla puolella.
+            const travelDistance =
+                layoutWidth + edgeMargin - startLeft;
+
+            truck.style.transform =
+                `translateX(${scrollPercent * travelDistance}px)`;
+        }
+
+        pylons.forEach(pylon => {
+            const rect = pylon.getBoundingClientRect();
+
+            const startRight =
+                rect.right - getTranslateX(pylon);
+
+            // Lopussa pylvään oikeakin reuna on näytön vasemmalla puolella.
+            const travelDistance =
+                startRight + edgeMargin;
+
+            const isFront =
+                pylon.classList.contains("front-pylon");
+
+            // Etupylvään liike alkaa hieman myöhemmin.
+            const delay = isFront ? 0.24 : 0;
+
+            const pylonProgress = Math.min(
+                1,
+                Math.max(0, (scrollPercent - delay) / (1 - delay))
+            );
+
+            const moveX =
+                -pylonProgress * travelDistance;
+
+            const flip =
+                pylon.classList.contains("front-pylon")
+                    ? " scaleX(-1)"
+                    : "";
+
+            pylon.style.transform =
+                `translateX(${moveX}px)${flip}`;
+        });
+    }
 
         function requestGraphicsUpdate() {
             if (updateRequested) return;
@@ -396,25 +431,34 @@ document.addEventListener('DOMContentLoaded', function() {
             requestGraphicsUpdate,
             { passive: true }
         );
-
-        window.addEventListener("orientationchange", () => {
-            setTimeout(() => {
-                layoutWidth =
-                    document.documentElement.clientWidth;
-
-                layoutHeight =
-                    document.documentElement.clientHeight;
-
-                scrollRange =
-                    document.documentElement.scrollHeight -
-                    layoutHeight;
-
+        window.addEventListener("resize", () => {
+            if (
+                document.documentElement.clientWidth !== layoutWidth
+            ) {
                 requestGraphicsUpdate();
-            }, 250);
+            }
         });
 
-        requestGraphicsUpdate();
-    }
+        window.addEventListener("load", requestGraphicsUpdate);
+
+                window.addEventListener("orientationchange", () => {
+                    setTimeout(() => {
+                        layoutWidth =
+                            document.documentElement.clientWidth;
+
+                        layoutHeight =
+                            document.documentElement.clientHeight;
+
+                        scrollRange =
+                            document.documentElement.scrollHeight -
+                            layoutHeight;
+
+                        requestGraphicsUpdate();
+                    }, 250);
+                });
+
+                requestGraphicsUpdate();
+            }
     // 6. UUTISTEN AVAA/SULJE -LOGIIKKA (Ajetaan vain sivuilla joissa on uutisia)
     const newsButtons = document.querySelectorAll('.news-toggle-btn');
     if (newsButtons.length > 0) {

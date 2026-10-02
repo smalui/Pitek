@@ -30,7 +30,9 @@ html {
 
 body {
     font-family: 'Roboto', sans-serif;
+    font-weight: 400;
     line-height: 1.6;
+    font-size: 0.95rem;
     color: var(--text-dark);
     background-color: var(--bg-main); 
     min-height: 100vh;
@@ -426,19 +428,19 @@ footer {
 
 
 .service-card-title {
-    color: var(--text-black);
-    font-size: 1.15rem;
-    font-weight: 700;
-    margin-bottom: 6px;
-    line-height: 1.25;
+    color: #17212f;
+    font-size: 1.2rem;
+    font-weight: 500;
+    line-height: 1.35;
+    margin-bottom: 12px;
 }
 
 .service-card-desc {
-    color: var(--text-black);
-    font-size: 0.9rem;
-    line-height: 1.35;
-    margin-bottom: 0;
-    margin-bottom: 12px;
+    color: #64748b;
+    font-size: 0.95rem;
+    font-weight: 400;
+    line-height: 1.6;
+    margin-bottom: 16px;
 }
 
 .read-more-btn {
@@ -1100,16 +1102,23 @@ footer {
         gap: 30px;
     }
 
-    .back-pylon { 
-        right: -200px; 
+    .back-pylon {
+        right: auto;
+        left: calc(100% + 40px);
     }
     
     .front-pylon { 
         right: -600px; 
     }
 
+    .scrolling-truck-container {
+        left: -600px;
+        top: calc(90svh - var(--truck-scene-size) * 0.99);
+        bottom: auto;
+    }
+
     .scrolling-truck {
-        height: calc(var(--truck-scene-size) * 0.75);
+        height: calc(var(--truck-scene-size) * 0.99);
     }
     
     .dropdown:hover .dropdown-content {
