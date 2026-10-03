@@ -185,6 +185,9 @@ document.addEventListener('DOMContentLoaded', function() {
             .then(data => {
                 
                 headerPlaceholder.innerHTML = data;
+                headerPlaceholder.querySelectorAll("[data-phone-link]").forEach(link => {
+                    link.href = `tel:${businessPhone}`;
+                });
 
                 const navToggle = document.querySelector(".nav-toggle");
                 const navigation = document.querySelector(".nav-links-right");
@@ -458,30 +461,7 @@ document.addEventListener('DOMContentLoaded', function() {
                 });
 
                 requestGraphicsUpdate();
-            }
-    // 6. UUTISTEN AVAA/SULJE -LOGIIKKA (Ajetaan vain sivuilla joissa on uutisia)
-    const newsButtons = document.querySelectorAll('.news-toggle-btn');
-    if (newsButtons.length > 0) {
-        newsButtons.forEach(btn => {
-            btn.addEventListener('click', function() {
-                const card = this.closest('.news-card');
-                const excerpt = card.querySelector('.news-excerpt');
-                const fullText = card.querySelector('.news-full');
-
-                if (fullText.style.display === 'none' || fullText.style.display === '') {
-                    fullText.style.display = 'block';
-                    excerpt.style.display = 'none';
-                    card.classList.add('open'); 
-                    this.textContent = 'Piilota teksti';
-                    this.style.backgroundColor = '#5f6368';
-                } else {
-                    fullText.style.display = 'none';
-                    excerpt.style.display = 'block';
-                    card.classList.remove('open'); 
-                    this.textContent = 'Lue koko uutinen';
-                    this.style.backgroundColor = '#1a73e8';
-                }
-            });
-        });
     }
+    
+    
 });
